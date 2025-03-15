@@ -102,6 +102,17 @@ max(l, r)
 
 ## Python Note
 ```python
-# 
+# to get mid in binary search
+l + (r - l) // 2  # this is to prevent overflow
+# binary search template
+l, r = -1, len(input)
+while l + 1 != r:
+	mid = l + (r - l)  // 2
+	if isBlue(mid):
+		mid = r
+	else:
+		mid = l
+return l or r depends on the question
+	
 ```
 

@@ -28,3 +28,15 @@ abs(l - r)
 # to get min or max value of two
 min(l, r)
 max(l, r)
+
+# [704. Binary Search](https://leetcode.com/problems/binary-search/)
+# nums[l] is target is not the same as nums[l] == target
+# if checking number in arr the same as a number, use '==' instead of 'is'
+nums[l] == target
+
+# [875. Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)
+# to get the smallest int <= to a/b
+math.ceil(a/b)
+
+
+

@@ -6,7 +6,7 @@
 2. define what to return, l or r
 3. use the template
 4. any other thing to be handled
-# Template
+# Template 0
 ```python
 def binary_search(arr: List[int], target: int) -> int:
     l, r = -1, len(arr)
@@ -37,7 +37,20 @@ def binary_search(arr: List[int], target: int) -> int:
 	#    condition => mid <= 5
     #    return l
 ```
-
+# Template 1
+```python
+def binary_search(arr: List[int], target: int) -> int:
+    l, r = 0, len(arr) - 1
+    first_true_index = -1
+    while l <= r:
+        mid = (l + r) // 2 # or mid = l + (r - l) // 2
+        if condition(mid):
+	        first_true_index = mid
+            r = mid - 1
+        else:
+            l = mid + 1
+    return first_true_index
+```
 ## NeetCode
 | Difficulty                                 | Problems                                                                                                         |                                 |
 | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- | ------------------------------- |
@@ -45,9 +58,10 @@ def binary_search(arr: List[int], target: int) -> int:
 | <span style="color: orange;">Medium</span> | [74. Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/)                                      | <input type="checkbox" checked> |
 | <span style="color: orange;">Medium</span> | [875. Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)                                   | <input type="checkbox" checked> |
 | <span style="color: orange;">Medium</span> | [153. Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/) | <input type="checkbox" checked> |
-| <span style="color: orange;">Medium</span> | [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)              | <input type="checkbox">         |
-| <span style="color: orange;">Medium</span> | [981. Time Based Key-Value Store](https://leetcode.com/problems/time-based-key-value-store/)                     | <input type="checkbox">         |
+| <span style="color: orange;">Medium</span> | [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)              | <input type="checkbox" checked> |
+| <span style="color: orange;">Medium</span> | [981. Time Based Key-Value Store](https://leetcode.com/problems/time-based-key-value-store/)                     | <input type="checkbox" checked> |
 | <span style="color: red;">Hard</span>      | [4. Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/)                     | <input type="checkbox">         |
+
 ## [704. Binary Search](https://leetcode.com/problems/binary-search/)
 ```python
 class Solution:
@@ -128,14 +142,147 @@ class Solution:
 
 ```
 
+## [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
+```python
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        # left sorted
+        #   [4,5,6,7,8,9,<10>,0,1,2,3]
+        #   target on sorted left
+        #   target on non sorted right
+        # right sorted
+        #   [5,6,7,0,<1>,2,3,4,5]
+        #   target on sorted right
+        #   target on non sorted left
+		# Note: couldn't find a way to use the template with l, r = -1, len(arr) and while l + 1 != r
+        l, r = 0, len(nums) - 1
+        while l <= r:
+            mid = l + (r - l) // 2
+            # 1. if we found the target
+            if nums[mid] == target:
+                return mid
+            # 2. [left, mid] is sorted
+            if nums[l] <= nums[mid]:
+                # target on sorted left side
+                if target >= nums[l] and target <= nums[mid]:
+                    r = mid - 1
+                else:
+                    l = mid +  1
+            # 3. [mid, right] is sorted
+            else:
+                # target on sorted right side
+                if target >= nums[mid] and target <= nums[r]:
+                    l = mid + 1
+                else:
+                    r = mid - 1
+        # target not found
+        return -1
+```
+
+## [981. Time Based Key-Value Store](https://leetcode.com/problems/time-based-key-value-store/)
+```python
+# Becasue the key value pairs are added base on time stamp, so it is sorted,
+# that's why we can use binary search
+class TimeMap:
+    def __init__(self):
+        self.store = {}
+	# Time: O(1)
+    def set(self, key: str, value: str, timestamp: int) -> None:
+        if key not in self.store.keys():
+            self.store[key] = []
+        self.store[key].append([value, timestamp])
+
+	# Time: O(logn)
+    def get(self, key: str, timestamp: int) -> str:
+        values = self.store.get(key, [])
+        n = len(values)
+        l, r = -1, n
+        res = ''
+
+        while l + 1 != r:
+            mid = l + (r - l) // 2
+            if self.store[key][mid][1] <= timestamp:
+                res = self.store[key][mid][0]
+                l = mid
+            else:
+                r = mid
+        return res
+
+# Your TimeMap object will be instantiated and called as such:
+# obj = TimeMap()
+# obj.set(key,value,timestamp)
+# param_2 = obj.get(key,timestamp)
+```
 
 ## Grind 75
 
-| Difficulty                                 | Problems                                                                                                                                              |                         |
-| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
-| <span style="color: green;">Easy</span>    | [704. Binary Search](https://leetcode.com/problems/binary-search/)                                                                                    | <input type="checkbox"> |
-| <span style="color: green;">Easy</span>    | [35. Search Insert Position](https://leetcode.com/problems/search-insert-position/)                                                                   | <input type="checkbox"> |
-| <span style="color: green;">Easy</span>    | [278. First Bad Version](https://leetcode.com/problems/first-bad-version/)                                                                            | <input type="checkbox"> |
-| <span style="color: orange;">Medium</span> | [34. Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) | <input type="checkbox"> |
-| <span style="color: orange;">Medium</span> | [981. Time Based Key-Value Store](https://leetcode.com/problems/time-based-key-value-store/)                                                          | <input type="checkbox"> |
-| <span style="color: red;">Hard</span>      | [1235. Maximum Profit in Job Scheduling](https://leetcode.com/problems/maximum-profit-in-job-scheduling/)                                             | <input type="checkbox"> |
+| Difficulty                                 | Problems                                                                                                                                               |                                 |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------- |
+| <span style="color: green;">Easy</span>    | [704. Binary Search](https://leetcode.com/problems/binary-search/)                                                                                     | <input type="checkbox" checked> |
+| <span style="color: green;">Easy</span>    | [35. Search Insert Position](https://leetcode.com/problems/search-insert-position/)                                                                    | <input type="checkbox" checked> |
+| <span style="color: green;">Easy</span>    | [278. First Bad Version](https://leetcode.com/problems/first-bad-version/)                                                                             | <input type="checkbox" checked> |
+| <span style="color: orange;">Medium</span> | *[34. Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) | <input type="checkbox" checked> |
+| <span style="color: orange;">Medium</span> | [981. Time Based Key-Value Store](https://leetcode.com/problems/time-based-key-value-store/)                                                           | <input type="checkbox" checked> |
+| <span style="color: red;">Hard</span>      | [1235. Maximum Profit in Job Scheduling](https://leetcode.com/problems/maximum-profit-in-job-scheduling/)                                              | <input type="checkbox">         |
+## [34. Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
+```python
+# solution 1
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        def findLowerBound(nums: List[int], target: int) -> int:
+            if len(nums) == 0:
+                return -1
+            l, r = -1, len(nums)
+            while l + 1 != r:
+                mid = l + (r - l) // 2
+                if nums[mid] < target:
+                    l = mid
+                else:
+                    r = mid
+            return r if r < len(nums) and nums[r] == target else -1
+
+        def findUpperBound(nums: List[int], target: int) -> int:
+            if len(nums) == 0:
+                return -1
+            l, r = -1, len(nums)
+            while l + 1 != r:
+                mid = l + (r - l) // 2
+                if nums[mid] > target:
+                    r = mid
+                else:
+                    l = mid
+            return l if nums[l] == target else -1
+
+        return [findLowerBound(nums, target), findUpperBound(nums, target)]
+
+# solution 2
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        def findLowerBound(nums: List[int], target: int) -> int:
+            l, r = 0, len(nums) - 1
+            while l <= r:
+                mid = l + (r - l) // 2
+                if nums[mid] == target:
+                    r = mid - 1
+                elif nums[mid] < target:
+                    l = mid + 1
+                elif nums[mid] > target:
+                    r = mid - 1
+
+            return l if l >= 0 and l < len(nums) and nums[l] == target else -1
+
+  
+        def findUpperBound(nums: List[int], target: int) -> int:
+            l, r = 0, len(nums) - 1
+            while l <= r:
+                mid = l + (r - l) // 2
+                if nums[mid] == target:
+                    l = mid + 1
+                elif nums[mid] < target:
+                    l = mid + 1
+                elif nums[mid] > target:
+                    r = mid - 1
+
+            return l - 1 if l - 1 >= 0 and nums[l - 1] == target else - 1
+
+        return [findLowerBound(nums, target), findUpperBound(nums, target)]

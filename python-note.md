@@ -38,5 +38,11 @@ nums[l] == target
 # to get the smallest int <= to a/b
 math.ceil(a/b)
 
+# [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/)
+# to get infinity
+infinite = float("inf")
+negative_infinite = float("-inf")
+# to get distance between two numbers
+abs(num1 - num2)
 
 

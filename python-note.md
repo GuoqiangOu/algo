@@ -45,4 +45,29 @@ negative_infinite = float("-inf")
 # to get distance between two numbers
 abs(num1 - num2)
 
+# [202. Happy Number](https://leetcode.com/problems/happy-number/)
+# to get last digit or a number
+digit = n % 10
+# to get other digits
+other_digit = n // 10
+# to get a square sum of a number (e.g. 123 -> 1^2 + 2^2 + 3^2 = 14)
+def squareSum(n):
+	squareSum = 0
+	while n > 0:
+		digit = n % 10
+		squareSum += digit * digit
+		n //= 10
+	return squareSum
+
+# [234. Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/)
+# to reverse linked list
+# [206. Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)
+prev = None
+curr = head
+while curr:
+	tmp = curr.next
+	curr.next = prev
+	prev = curr
+	curr = tmp
+return prev
 

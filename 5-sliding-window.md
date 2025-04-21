@@ -1,6 +1,27 @@
-# Sliding Window
-
-## LeetCode
+# Fixed Sliding Window
+## Steps
+1. append to window
+2. update res/ans
+3. remove/dequeue from window
+## Template
+```python
+def fixedSlidingWindow(self, k, arr):
+	# initialization
+	res = 0 # or float('INF') or float('-INF')
+	window = 0
+	for i, element in enumerate(arr):
+		# 1. append
+		window += 1  # or += element
+		# extend to window size
+		if i < k - 1:
+			continue
+		# 2. update
+		res = max(res, window)  # or min(res, window)
+		# 3. dequeue
+		window -= 1  # or -= arr[i - k + 1]
+	return res
+```
+# NeetCode
 | Difficulty                                 | Problems                                                                                                                           |                         |
 | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
 | <span style="color: green;">Easy</span>    | [121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)                             | <input type="checkbox"> |
@@ -9,3 +30,306 @@
 | <span style="color: orange;">Medium</span> | [567. Permutation in String](https://leetcode.com/problems/permutation-in-string/)                                                 | <input type="checkbox"> |
 | <span style="color: red;">Hard</span>      | [76. Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/)                                            | <input type="checkbox"> |
 | <span style="color: red;">Hard</span>      | [239. Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/)                                               | <input type="checkbox"> |
+# Grokking the Coding Interview
+
+| #   | Difficulty                                 | Problems                                                                                                                                       |                          |                                 |
+| --- | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | ------------------------------- |
+| 1   | <span style="color: green;">Easy</span>    | [Maximum Sum Subarray of Size K](https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/maximum-sum-subarray-of-size-k-easy) | #fixed-sliding-window    | <input type="checkbox" checked> |
+| 2   | <span style="color: orange;">Medium</span> | [209. Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/)                                                     | #flexible-sliding-window | <input type="checkbox" checked> |
+| 3   | <span style="color: orange;">Medium</span> | [2461. Maximum Sum of Distinct Subarrays With Length K](https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/)        | #fixed-sliding-window    | <input type="checkbox" checked> |
+| 4   | <span style="color: orange;">Medium</span> |                                                                                                                                                |                          | <input type="checkbox">         |
+| 5   | <span style="color: red;">Hard</span>      |                                                                                                                                                |                          | <input type="checkbox">         |
+| 6   | <span style="color: red;">Hard</span>      |                                                                                                                                                |                          | <input type="checkbox">         |
+|     |                                            |                                                                                                                                                |                          |                                 |
+### [Maximum Sum Subarray of Size K](https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/maximum-sum-subarray-of-size-k-easy)
+```python
+class Solution:
+  def findMaxSumSubArray(self,k, arr):
+    res = window = 0
+    for i, num in enumerate(arr):
+	  # 1. append to window
+      window += num
+      if i < k - 1:  # keep adding if window size < k
+        continue
+      # 2. update res
+      res = max(res, window)
+      # 3. dequeue from window
+      window -= arr[i - k + 1]
+    return res
+```
+### [209. Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/)
+```python
+class Solution:
+    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+        res = float('INF')
+        window = curr_len = 0
+        for i, num in enumerate(nums):
+            # 1. append to window
+            window += num
+            curr_len += 1
+            while window >= target:
+                # 2. update res
+                res = min(res, curr_len)
+                # 3. dequeue from window
+                window -= nums[i - curr_len + 1]
+                curr_len -= 1
+        return res if res != float('INF') else 0
+```
+
+# [灵神](https://leetcode.cn/discuss/post/3578981/ti-dan-hua-dong-chuang-kou-ding-chang-bu-rzz7/)
+## Fixed Sliding Window Basis
+
+| #   | Difficulty                                      | Problems                                                                                                                                                                                            |                       |                                 |
+| --- | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------- |
+| 1   | <span style="color: orange;">Medium</span> 1263 | [1456. Maximum Number of Vowels in a Substring of Given Length](https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/)                                             | #fixed-sliding-window | <input type="checkbox" checked> |
+| 2   | <span style="color: green;">Easy</span>         | [643. Maximum Average Subarray I](https://leetcode.com/problems/maximum-average-subarray-i/)                                                                                                        | #fixed-sliding-window | <input type="checkbox" checked> |
+| 3   | <span style="color: orange;">Medium</span> 1317 | [1343. Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold](https://leetcode.com/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/) | #fixed-sliding-window | <input type="checkbox" checked> |
+| 4   | <span style="color: orange;">Medium</span> 1358 | [2090. K Radius Subarray Averages](https://leetcode.com/problems/k-radius-subarray-averages/)                                                                                                       | #fixed-sliding-window | <input type="checkbox" checked> |
+| 5   | <span style="color: green;">Easy</span> 1360    | [2379. Minimum Recolors to Get K Consecutive Black Blocks](https://leetcode.com/problems/minimum-recolors-to-get-k-consecutive-black-blocks/)                                                       | #fixed-sliding-window | <input type="checkbox" checked> |
+| 6   | <span style="color: orange;">Medium</span> 1546 | [2841. Maximum Sum of Almost Unique Subarray](https://leetcode.com/problems/maximum-sum-of-almost-unique-subarray/)                                                                                 | #fixed-sliding-window | <input type="checkbox" checked> |
+| 7   | <span style="color: orange;">Medium</span> 1553 | [2461. Maximum Sum of Distinct Subarrays With Length K](https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/)                                                             | #fixed-sliding-window | <input type="checkbox" checked> |
+| 8   | <span style="color: orange;">Medium</span> 1574 | [1423. Maximum Points You Can Obtain from Cards](https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/)                                                                           | #fixed-sliding-window | <input type="checkbox" checked> |
+| 9   | <span style="color: orange;">Medium</span>      | [1052. Grumpy Bookstore Owner](https://leetcode.com/problems/grumpy-bookstore-owner/)                                                                                                               | #fixed-sliding-window | <input type="checkbox">         |
+| 10  | <span style="color: green;">Easy</span>         | [1652. Defuse the Bomb](https://leetcode.com/problems/defuse-the-bomb/)                                                                                                                             | #fixed-sliding-window | <input type="checkbox">         |
+| 11  | <span style="color: green;">Easy</span>         | [1176. Diet Plan Performance](https://leetcode.com/problems/diet-plan-performance/)                                                                                                                 | #fixed-sliding-window | <input type="checkbox">         |
+| 12  | <span style="color: orange;">Medium</span>      | [1100. Find K-Length Substrings With No Repeated Characters](https://leetcode.com/problems/find-k-length-substrings-with-no-repeated-characters/)                                                   | #fixed-sliding-window | <input type="checkbox">         |
+| 13  | <span style="color: orange;">Medium</span>      | [1852. Distinct Numbers in Each Subarray](https://leetcode.com/problems/distinct-numbers-in-each-subarray/)                                                                                         | #fixed-sliding-window | <input type="checkbox">         |
+| 14  | <span style="color: orange;">Medium</span>      | [1151. Minimum Swaps to Group All 1's Together](https://leetcode.com/problems/minimum-swaps-to-group-all-1s-together/)                                                                              | #fixed-sliding-window | <input type="checkbox">         |
+| 15  | <span style="color: orange;">Medium</span>      | [2107. Number of Unique Flavors After Sharing K Candies](https://leetcode.com/problems/number-of-unique-flavors-after-sharing-k-candies/)                                                           | #fixed-sliding-window | <input type="checkbox">         |
+
+###  [1456. Maximum Number of Vowels in a Substring of Given Length](https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/)
+```python
+class Solution:
+    def maxVowels(self, s: str, k: int) -> int:
+        vowel = {'a', 'e', 'i', 'o', 'u'}
+        res = window = 0
+        for i, char in enumerate(s):
+            # 1. append to window
+            if char in vowel:
+                window += 1
+            if i < k - 1:  # window size less than k
+                continue
+            # 2. update res
+            res = max(res, window)
+            # 3. dequeue from window
+            if s[i - k + 1] in vowel:
+                window -= 1
+        return res
+```
+### [643. Maximum Average Subarray I](https://leetcode.com/problems/maximum-average-subarray-i/)
+```python
+class Solution:
+    def findMaxAverage(self, nums: List[int], k: int) -> float:
+        res = float('-INF')
+        window = 0
+        for i, num in enumerate(nums):
+            # 1. append
+            window += num
+            if i < k - 1:
+                continue
+            # 2. update
+            res = max(res, window)
+            # 3. dequeue
+            window -= nums[i - k + 1]
+        return res / k
+```
+### [1343. Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold](https://leetcode.com/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/)
+```python
+class Solution:
+    def numOfSubarrays(self, arr: List[int], k: int, threshold: int) -> int:
+        res = window = 0
+        for i, num in enumerate(arr):
+            # 1. append
+            window += num
+            if i < k - 1:
+                continue
+            # 2. update
+            if window / k >= threshold:
+                res += 1
+            # 3. remove
+            window -= arr[i - k + 1]
+        return res
+```
+### [2090. K Radius Subarray Averages](https://leetcode.com/problems/k-radius-subarray-averages/)
+```python
+class Solution:
+    def getAverages(self, nums: List[int], k: int) -> List[int]:
+        # the main idea is to think of the window size is 2k+1
+        # cast 1: when k is 0, the average is the num itself
+        if k == 0:
+            return nums
+        # initilize the result as array with -1s
+        res = [-1] * len(nums)
+  
+        # cast 2:
+        # if the window size 2 * k + 1 is bigger than the len of array,
+        # the average will always be -1s
+        if 2 * k + 1 > len(nums):
+            return res
+        window = 0
+        for i, num in enumerate(nums):
+            # 1. add
+            window += num
+            # skip if average cannot find
+            if i - k < 0 or i < 2 * k:
+                continue
+            # 2. update
+            res[i - k] = (window // (2 * k + 1))
+            # 3. dequeue
+            window -= nums[i - 2 * k]
+        return res
+```
+### [2379. Minimum Recolors to Get K Consecutive Black Blocks](https://leetcode.com/problems/minimum-recolors-to-get-k-consecutive-black-blocks/)
+```python
+# Example 1:
+# Input: blocks = "WBBWWBBWBW", k = 7
+# Output: 3
+
+# Example 2:
+# Input: blocks = "WBWBBBW", k = 2
+# Output: 0
+class Solution:
+    def minimumRecolors(self, blocks: str, k: int) -> int:
+        res = float('INF')
+        window = 0
+        for i, block in enumerate(blocks):
+            # 1. append
+            if block == 'W':
+                window += 1
+            # extend to window size
+            if i < k - 1:
+                continue
+            # 2. update
+            res = min(res, window)
+            # 3. dequeue
+            if blocks[i - k + 1] == 'W':
+                window -= 1
+        return res
+```
+### [2841. Maximum Sum of Almost Unique Subarray](https://leetcode.com/problems/maximum-sum-of-almost-unique-subarray/)
+```python
+# Example 1:
+# Input: nums = [2,6,7,3,1,7], m = 3, k = 4
+# Output: 18
+
+# Example 2:
+# Input: nums = [5,9,9,2,4,5,4], m = 1, k = 3
+# Output: 23
+
+# Example 3:
+
+# Input: nums = [1,2,1,2,1,2,1], m = 3, k = 3
+# Output: 0
+
+class Solution:
+    def maxSum(self, nums: List[int], m: int, k: int) -> int:
+        unique_nums = defaultdict()
+        window = 0
+        res = 0
+        for i, num in enumerate(nums):
+            # keep track of unique nums
+            unique_nums[num] = unique_nums.get(num, 0) + 1
+            # 1. append
+            window += num
+            # extend window to size k
+            if i < k - 1:
+                continue
+            # 2. update
+            if len(unique_nums) >= m:
+                res = max(res, window)
+            # 3. dequeue
+            window -= nums[i - k + 1]
+            # remove unique nums
+            count = unique_nums.get(nums[i - k + 1], 0)
+            if count > 1:
+                unique_nums[nums[i - k + 1]] -= 1
+            else:
+                unique_nums.pop(nums[i - k + 1])
+        return res
+```
+### [2461. Maximum Sum of Distinct Subarrays With Length K](https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/)
+Key Points:
+1. use hashmap to store {num : index},  so we can track for last occurrence
+2. if last occurrence found, loop to update left until the last occurrence is out of the window
+3. else are similar to other fixed sliding window problems
+Mistake:
+I spent too much time on figuring out key point #2, I was aware of that the duplicate needs to be remove, but I was just using if statement not a loop to include all the cases (duplicate at start window, mid and end of the window)
+```python
+# Input: nums = [1,5,4,2,9,9,9], k = 3
+# Output: 15
+
+# Input: [9,18,10,13,17,9,19,2,1,18], k = 5
+# Output: 10 + 13 + 17 + 9 + 19 = 68
+
+# Input: nums = [4,4,4], k = 3
+# Output: 0
+class Solution:
+    def maximumSubarraySum(self, nums: List[int], k: int) -> int:
+        res = window = 0
+        distinct_nums = defaultdict()
+        left = right = 0
+        while right < len(nums):
+            curr_num = nums[right]
+            # move left to update the window to not include the duplicate
+            duplicate_indx = distinct_nums.get(curr_num, -1)
+            while left <= duplicate_indx:
+                window -= nums[left]
+                left += 1
+                continue
+            # 1. append
+            window += curr_num
+            distinct_nums[curr_num] = right
+            # extend to window size
+            if right - left < k - 1:
+                right += 1
+                continue
+            # 2. update
+            res = max(res, window)
+            # 3. dequeue
+            window -= nums[left]
+            # move window
+            left += 1
+            right += 1
+        return res
+```
+### [1423. Maximum Points You Can Obtain from Cards](https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/)
+```python
+# Input: cardPoints = [1,2,3,4,5,6,1], k = 3
+# Output: 12
+
+# Input: cardPoints = [1,79,80,1,1,1,200,1], k = 3
+# Output: 202
+
+# Input: cardPoints = [2,2,2], k = 2
+# Output: 4
+
+# Idea:
+# the window can cover both the start and the end
+# 1. get the sum from 0-k from start
+# 2. dequeue from start then append with tail
+class Solution:
+    def maxScore(self, cardPoints: List[int], k: int) -> int:
+        i = window = 0
+        # get the sum of 0-k from start
+        while i < k:
+            window += cardPoints[i]
+            i += 1
+        res = window
+        while i > 0:
+            # 1. dequeue from start
+            i -= 1
+            window -= cardPoints[i]
+            # 2. append with tail
+            window += cardPoints[i - k]
+            # 3. update
+            res = max(res, window)
+        return res
+```
+
+### [1052. Grumpy Bookstore Owner](https://leetcode.com/problems/grumpy-bookstore-owner/)
+
+### [1652. Defuse the Bomb](https://leetcode.com/problems/defuse-the-bomb/)
+```python
+
+```
+### [1176. Diet Plan Performance](https://leetcode.com/problems/diet-plan-performance/)

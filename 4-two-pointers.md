@@ -1,32 +1,32 @@
 # Two Pointers
 
 ## NeetCode
-| Difficulty                                 | Problems                                                                                                   |                         |
-| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------- | ----------------------- |
-| <span style="color: green;">Easy</span>    | [88. Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array/)                                | <input type="checkbox"> |
-| <span style="color: green;">Easy</span>    | [125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)                                   | <input type="checkbox"> |
-| <span style="color: orange;">Medium</span> | [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/) | <input type="checkbox"> |
-| <span style="color: orange;">Medium</span> | [15. 3Sum](https://leetcode.com/problems/3sum/)                                                            | <input type="checkbox"> |
-| <span style="color: orange;">Medium</span> | [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)                  | <input type="checkbox"> |
-| <span style="color: red;">Hard</span>      | [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)                              | <input type="checkbox"> |
+| #   | Difficulty                                 | Problems                                                                                                   |                         |
+| --- | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------- | ----------------------- |
+| 1   | <span style="color: green;">Easy</span>    | [88. Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array/)                                | <input type="checkbox"> |
+| 2   | <span style="color: green;">Easy</span>    | [125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)                                   | <input type="checkbox"> |
+| 3   | <span style="color: orange;">Medium</span> | [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/) | <input type="checkbox"> |
+| 4   | <span style="color: orange;">Medium</span> | [15. 3Sum](https://leetcode.com/problems/3sum/)                                                            | <input type="checkbox"> |
+| 5   | <span style="color: orange;">Medium</span> | [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)                  | <input type="checkbox"> |
+| 6   | <span style="color: red;">Hard</span>      | [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)                              | <input type="checkbox"> |
 
 
 ## Grokking the Coding Interview
 
-| Difficulty                                 | Problems                                                                                                                                                       |                                 |
-| ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| <span style="color: green;">Easy</span>    | [345. Reverse Vowels of a String](https://leetcode.com/problems/reverse-vowels-of-a-string/)                                                                   | <input type="checkbox" checked> |
-| <span style="color: green;">Easy</span>    | [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)                                                     | <input type="checkbox">         |
-| <span style="color: green;">Easy</span>    | [Find Non-Duplicate Number Instances (easy)](https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/find-nonduplicate-number-instances-easy) | <input type="checkbox">         |
-| <span style="color: green;">Easy</span>    | [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/)                                                                     | <input type="checkbox">         |
-| <span style="color: orange;">Medium</span> | [15. 3Sum](https://leetcode.com/problems/3sum/)                                                                                                                | <input type="checkbox">         |
-| <span style="color: orange;">Medium</span> | [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/)                                                                                                | <input type="checkbox">         |
-| <span style="color: orange;">Medium</span> | [Triplet Sum Close to Target (medium)](https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/triplet-sum-close-to-target-medium)            | <input type="checkbox">         |
-| <span style="color: orange;">Medium</span> | [259. 3Sum Smaller](https://leetcode.com/problems/3sum-smaller/)                                                                                               | <input type="checkbox">         |
-| <span style="color: orange;">Medium</span> | [75. Sort Colors](https://leetcode.com/problems/sort-colors/)                                                                                                  | <input type="checkbox">         |
-| <span style="color: orange;">Medium</span> | [18. 4Sum](https://leetcode.com/problems/4sum/)                                                                                                                | <input type="checkbox">         |
-| <span style="color: green;">Easy</span>    | [844. Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/)                                                                       | <input type="checkbox">         |
-| <span style="color: orange;">Medium</span> | [581. Shortest Unsorted Continuous Subarray](https://leetcode.com/problems/shortest-unsorted-continuous-subarray/)                                             | <input type="checkbox">         |
+| #   | Difficulty                                 | Problems                                                                                                                                                       |                                 |
+| --- | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| 1   | <span style="color: green;">Easy</span>    | [345. Reverse Vowels of a String](https://leetcode.com/problems/reverse-vowels-of-a-string/)                                                                   | <input type="checkbox" checked> |
+| 2   | <span style="color: green;">Easy</span>    | [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)                                                     | <input type="checkbox">         |
+| 3   | <span style="color: green;">Easy</span>    | [Find Non-Duplicate Number Instances (easy)](https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/find-nonduplicate-number-instances-easy) | <input type="checkbox">         |
+| 4   | <span style="color: green;">Easy</span>    | [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/)                                                                     | <input type="checkbox">         |
+| 5   | <span style="color: orange;">Medium</span> | [15. 3Sum](https://leetcode.com/problems/3sum/)                                                                                                                | <input type="checkbox">         |
+| 6   | <span style="color: orange;">Medium</span> | [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/)                                                                                                | <input type="checkbox">         |
+| 7   | <span style="color: orange;">Medium</span> | [Triplet Sum Close to Target (medium)](https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/triplet-sum-close-to-target-medium)            | <input type="checkbox">         |
+| 8   | <span style="color: orange;">Medium</span> | [259. 3Sum Smaller](https://leetcode.com/problems/3sum-smaller/)                                                                                               | <input type="checkbox">         |
+| 9   | <span style="color: orange;">Medium</span> | [75. Sort Colors](https://leetcode.com/problems/sort-colors/)                                                                                                  | <input type="checkbox">         |
+| 10  | <span style="color: orange;">Medium</span> | [18. 4Sum](https://leetcode.com/problems/4sum/)                                                                                                                | <input type="checkbox">         |
+| 11  | <span style="color: green;">Easy</span>    | [844. Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/)                                                                       | <input type="checkbox">         |
+| 12  | <span style="color: orange;">Medium</span> | [581. Shortest Unsorted Continuous Subarray](https://leetcode.com/problems/shortest-unsorted-continuous-subarray/)                                             | <input type="checkbox">         |
 
 # [Find Non-Duplicate Number Instances (easy)](https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/find-nonduplicate-number-instances-easy)
 ```python

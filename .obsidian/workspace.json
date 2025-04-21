@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "python-note.md",
+                "file": "5-sliding-window.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "python-note"
+              "title": "5-sliding-window"
             }
           }
         ],
@@ -171,13 +171,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "python-note.md",
+                "file": "5-sliding-window.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of python-note"
+              "title": "Outline of 5-sliding-window"
             }
           }
         ],
@@ -199,19 +199,19 @@
   },
   "active": "fc2a269994667c5e",
   "lastOpenFiles": [
-    "4.1-fast-and-slow-pointers.md",
-    "python-note.md",
-    "warmup.md",
     "4-two-pointers.md",
+    "4.1-fast-and-slow-pointers.md",
+    "1-arrays-and-hashing.md",
     "3-stack.md",
+    "5-sliding-window.md",
+    "filter.md",
     "6-binary-search.md",
     "7-linked-list.md",
-    "5-sliding-window.md",
-    "1-arrays-and-hashing.md",
     "8-tree.md",
-    "Algos.md",
+    "warmup.md",
     "README.md",
-    "filter.md",
+    "python-note.md",
+    "Algos.md",
     "Python Notes.md",
     "().md",
     "Untitled.canvas"

@@ -330,6 +330,92 @@ class Solution:
 
 ### [1652. Defuse the Bomb](https://leetcode.com/problems/defuse-the-bomb/)
 ```python
+class Solution:
+    def decrypt(self, code: List[int], k: int) -> List[int]:
+        # note about the range(n + abs(k)):
+        # [5,7,1,4] -> [5,7,1,4,5,7,1]
+        # this covers all the result we need
+  
+        # 2. update res:
+        # if k > 0, we update the (left - 1) idx
+        # if k < 0, we update the (right + 1) idx
 
+        # problem: idx out of range
+        # resolution: use %:
+        # using mod we can get the index so it won't be out of range
+  
+        # + example:
+        # [5,7,1,4], k=3, window=[1,4,5], left=2
+        # we need to update result of 7
+        # (left - 1) % n -> (2-1)%4 -> 1
+        # update res[1]
+
+        # - example:
+        # [5,7,1,4], k=-3, window=[7,1,4], right=3
+        # we need to update result of 5,
+        # (right + 1) % n -> (3+1)%4 -> 0
+        # update res[0]
+  
+        # 3. dequeue:
+        # [5,7,1,4], k=3,
+  
+        # window update:
+        # [7, 1, 4] -> [1,4,5], left=1
+        # we need to remove 7 (idx 1) then add 5 (idx 0)
+        # remove 7: left%n -> 1%4 -> 1 -> code[1] -> 7
+        # add 5: right%n -> 4%4 -> 0 -> code[0] -> 5
+
+        # left update: left=1 -> left=2
+        # ((left+1) % n) -> (2%4) -> 2
+
+        n = len(code)
+        res = [0] * n
+        if k == 0:
+            return res
+        window = 0
+        left = 0
+        for right in range(n + abs(k)):
+            # 1. append
+            window += code[right % n]
+            # extend to window size
+            if right - left + 1 < abs(k):
+                continue
+            # 2. update
+            if k > 0:
+                res[(left - 1) % n] = window
+            else:
+                res[(right + 1) % n] = window
+            # 3. dequeue
+            window -= code[left % n]
+            left = (left + 1) % n
+        return res
 ```
 ### [1176. Diet Plan Performance](https://leetcode.com/problems/diet-plan-performance/)
+Mistake on not fully understanding the question:
+I thought res need to be updated with the sum of window (e.g. with `-= window` or `+= window`), but it actually 1.
+```python
+# Input: calories = [1,2,3,4,5], k = 1, lower = 3, upper = 3
+# Output: 0
+# Explanation: Since k = 1, we consider each element of the array separately and compare it to lower and upper.
+# calories[0] and calories[1] are less than lower so 2 points are lost.
+# calories[3] and calories[4] are greater than upper so 2 points are gained.
+class Solution:
+    def dietPlanPerformance(self, calories: List[int], k: int, lower: int, upper: int) -> int:
+        res = window = 0
+  
+        for i, num in enumerate(calories):
+            # 1. append
+            window += num
+            # extend to window size
+            if i < k - 1:
+                continue
+            # 2. update res
+            if window < lower:
+                res -= 1
+            elif window > upper:
+                res += 1
+            # 3. dequeue
+            window -= calories[i - k + 1]
+  
+        return res
+```

@@ -89,10 +89,10 @@ class Solution:
 | 6   | <span style="color: orange;">Medium</span> 1546 | [2841. Maximum Sum of Almost Unique Subarray](https://leetcode.com/problems/maximum-sum-of-almost-unique-subarray/)                                                                                 | #fixed-sliding-window | <input type="checkbox" checked> |
 | 7   | <span style="color: orange;">Medium</span> 1553 | [2461. Maximum Sum of Distinct Subarrays With Length K](https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/)                                                             | #fixed-sliding-window | <input type="checkbox" checked> |
 | 8   | <span style="color: orange;">Medium</span> 1574 | [1423. Maximum Points You Can Obtain from Cards](https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/)                                                                           | #fixed-sliding-window | <input type="checkbox" checked> |
-| 9   | <span style="color: orange;">Medium</span>      | [1052. Grumpy Bookstore Owner](https://leetcode.com/problems/grumpy-bookstore-owner/)                                                                                                               | #fixed-sliding-window | <input type="checkbox">         |
-| 10  | <span style="color: green;">Easy</span>         | [1652. Defuse the Bomb](https://leetcode.com/problems/defuse-the-bomb/)                                                                                                                             | #fixed-sliding-window | <input type="checkbox">         |
-| 11  | <span style="color: green;">Easy</span>         | [1176. Diet Plan Performance](https://leetcode.com/problems/diet-plan-performance/)                                                                                                                 | #fixed-sliding-window | <input type="checkbox">         |
-| 12  | <span style="color: orange;">Medium</span>      | [1100. Find K-Length Substrings With No Repeated Characters](https://leetcode.com/problems/find-k-length-substrings-with-no-repeated-characters/)                                                   | #fixed-sliding-window | <input type="checkbox">         |
+| 9   | <span style="color: orange;">Medium</span>      | [1052. Grumpy Bookstore Owner](https://leetcode.com/problems/grumpy-bookstore-owner/)                                                                                                               | #fixed-sliding-window | <input type="checkbox" checked> |
+| 10  | <span style="color: green;">Easy</span>         | [1652. Defuse the Bomb](https://leetcode.com/problems/defuse-the-bomb/)                                                                                                                             | #fixed-sliding-window | <input type="checkbox" checked> |
+| 11  | <span style="color: green;">Easy</span>         | [1176. Diet Plan Performance](https://leetcode.com/problems/diet-plan-performance/)                                                                                                                 | #fixed-sliding-window | <input type="checkbox" checked> |
+| 12  | <span style="color: orange;">Medium</span>      | [1100. Find K-Length Substrings With No Repeated Characters](https://leetcode.com/problems/find-k-length-substrings-with-no-repeated-characters/)                                                   | #fixed-sliding-window | <input type="checkbox" checked> |
 | 13  | <span style="color: orange;">Medium</span>      | [1852. Distinct Numbers in Each Subarray](https://leetcode.com/problems/distinct-numbers-in-each-subarray/)                                                                                         | #fixed-sliding-window | <input type="checkbox">         |
 | 14  | <span style="color: orange;">Medium</span>      | [1151. Minimum Swaps to Group All 1's Together](https://leetcode.com/problems/minimum-swaps-to-group-all-1s-together/)                                                                              | #fixed-sliding-window | <input type="checkbox">         |
 | 15  | <span style="color: orange;">Medium</span>      | [2107. Number of Unique Flavors After Sharing K Candies](https://leetcode.com/problems/number-of-unique-flavors-after-sharing-k-candies/)                                                           | #fixed-sliding-window | <input type="checkbox">         |
@@ -327,7 +327,32 @@ class Solution:
 ```
 
 ### [1052. Grumpy Bookstore Owner](https://leetcode.com/problems/grumpy-bookstore-owner/)
-
+```python
+class Solution:
+    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:
+        # idea:
+        # 1. get the base number of satifaction (sum of 0s)
+        # 2. get the max number of dissatifaction (max sum of 1s in window size)
+        # 3. return the sum of satifaction + max window dissatifaction
+        max_dissatifaction = window = 0
+        satisfied = 0
+        for i in range(len(customers)):
+            # 1. append
+            if grumpy[i]:  # 1s
+                window += customers[i]
+            else:  # 0s
+                # base satifaction
+                satisfied += customers[i]
+            # extend to window size
+            if i < minutes - 1:
+                continue
+            # 2. update
+            max_dissatifaction = max(max_dissatifaction, window)
+            # 3. dequeue
+            if grumpy[i - minutes + 1]:
+                window -= customers[i - minutes + 1]
+        return satisfied + max_dissatifaction
+```
 ### [1652. Defuse the Bomb](https://leetcode.com/problems/defuse-the-bomb/)
 ```python
 class Solution:
@@ -417,5 +442,45 @@ class Solution:
             # 3. dequeue
             window -= calories[i - k + 1]
   
+        return res
+```
+### [1100. Find K-Length Substrings With No Repeated Characters](https://leetcode.com/problems/find-k-length-substrings-with-no-repeated-characters/)
+Silly mistake:
+I keep using `visited.get(c, -1) > 0`, so when the case is `s="aaaaaaaa"`, `k=2`, it could not detect the duplicate, and it keeps adding to res and set and pop when right increment.
+```python
+# Input: s="aaaaaaaa", k=2
+# Output: 0
+
+# Input: s = "havefunonleetcode", k = 5
+# Output: 6
+# Explanation: There are 6 substrings they are: 'havef','avefu','vefun','efuno','etcod','tcode'.
+
+# Input: s = "home", k = 5
+# Output: 0
+class Solution:
+    def numKLenSubstrNoRepeats(self, s: str, k: int) -> int:
+        n = len(s)
+        res = 0
+        if k > n:
+            return res
+        visited = defaultdict()
+        left = 0
+        for right, c in enumerate(s):
+            # if found duplicate, update left
+            if visited.get(c, -1) > -1:
+                last_occurence = visited[c]
+                while left <= last_occurence:
+                    visited.pop(s[left])
+                    left += 1
+            # 1. append
+            visited[c] = right
+            # extend to window size
+            if right - left + 1 < k:
+                continue
+            # 2. update
+            res += 1
+            # 3. dequeue
+            visited.pop(s[left])
+            left += 1
         return res
 ```

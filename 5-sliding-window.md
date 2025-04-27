@@ -93,8 +93,8 @@ class Solution:
 | 10  | <span style="color: green;">Easy</span>         | [1652. Defuse the Bomb](https://leetcode.com/problems/defuse-the-bomb/)                                                                                                                             | #fixed-sliding-window | <input type="checkbox" checked> |
 | 11  | <span style="color: green;">Easy</span>         | [1176. Diet Plan Performance](https://leetcode.com/problems/diet-plan-performance/)                                                                                                                 | #fixed-sliding-window | <input type="checkbox" checked> |
 | 12  | <span style="color: orange;">Medium</span>      | [1100. Find K-Length Substrings With No Repeated Characters](https://leetcode.com/problems/find-k-length-substrings-with-no-repeated-characters/)                                                   | #fixed-sliding-window | <input type="checkbox" checked> |
-| 13  | <span style="color: orange;">Medium</span>      | [1852. Distinct Numbers in Each Subarray](https://leetcode.com/problems/distinct-numbers-in-each-subarray/)                                                                                         | #fixed-sliding-window | <input type="checkbox">         |
-| 14  | <span style="color: orange;">Medium</span>      | [1151. Minimum Swaps to Group All 1's Together](https://leetcode.com/problems/minimum-swaps-to-group-all-1s-together/)                                                                              | #fixed-sliding-window | <input type="checkbox">         |
+| 13  | <span style="color: orange;">Medium</span>      | [1852. Distinct Numbers in Each Subarray](https://leetcode.com/problems/distinct-numbers-in-each-subarray/)                                                                                         | #fixed-sliding-window | <input type="checkbox" checked> |
+| 14  | <span style="color: orange;">Medium</span>      | [1151. Minimum Swaps to Group All 1's Together](https://leetcode.com/problems/minimum-swaps-to-group-all-1s-together/)                                                                              | #fixed-sliding-window | <input type="checkbox" checked> |
 | 15  | <span style="color: orange;">Medium</span>      | [2107. Number of Unique Flavors After Sharing K Candies](https://leetcode.com/problems/number-of-unique-flavors-after-sharing-k-candies/)                                                           | #fixed-sliding-window | <input type="checkbox">         |
 
 ###  [1456. Maximum Number of Vowels in a Substring of Given Length](https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/)
@@ -482,5 +482,67 @@ class Solution:
             # 3. dequeue
             visited.pop(s[left])
             left += 1
+        return res
+```
+### [1852. Distinct Numbers in Each Subarray](https://leetcode.com/problems/distinct-numbers-in-each-subarray/)
+
+```python
+# Input: nums = [1,2,3,2,2,1,3], k = 3
+# Output: [3,2,2,2,3]
+# Explanation:** The number of distinct elements in each subarray goes as follows:
+# - nums[0..2] = [1,2,3] so ans[0] = 3
+# - nums[1..3] = [2,3,2] so ans[1] = 2
+# - nums[2..4] = [3,2,2] so ans[2] = 2
+# - nums[3..5] = [2,2,1] so ans[3] = 2
+# - nums[4..6] = [2,1,3] so ans[4] = 3
+class Solution:
+    def distinctNumbers(self, nums: List[int], k: int) -> List[int]:
+        res = []
+        distinct_nums = defaultdict()
+        for i, num in enumerate(nums):
+            # 1. append
+            distinct_nums[num] = distinct_nums.get(num, 0) + 1
+            # extend to window size
+            if i < k - 1:
+                continue
+            # 2. update
+            # note: len(distinct_nums.keys()) cost O(1)
+            res.append(len(distinct_nums.keys()))
+            num_to_remove = nums[i - k + 1]
+            # 3. dequeue
+            if distinct_nums.get(num_to_remove) > 1:
+                distinct_nums[num_to_remove] -= 1
+            else:
+                distinct_nums.pop(num_to_remove)
+        return res
+```
+### [1151. Minimum Swaps to Group All 1's Together](https://leetcode.com/problems/minimum-swaps-to-group-all-1s-together/)
+The main point of this problem is to figure out the number of swap is the same as number of 0s in the window, which I learned from https://www.youtube.com/watch?v=VXi_-2CmitM
+```python
+class Solution:
+    def minSwaps(self, data: List[int]) -> int:
+        # main idea:
+        # the meaning of num of swap is the num of 0s in the window
+        # 1. append: +1 when it's 0
+        # 2. update
+        # 3. dequeue: -1 if the num to be deququed is 0
+        n = len(data)
+        k = data.count(1)
+        if k <= 1:
+            return 0
+        res = n
+        window = 0
+        for i in range(n):
+            # 1. append
+            if data[i] == 0:
+                window += 1
+            # extend to window size
+            if i < k - 1:
+                continue
+            # 2. update
+            res = min(res, window)
+            # 3. dequeue
+            if data[i - k + 1] == 0:
+                window -= 1
         return res
 ```

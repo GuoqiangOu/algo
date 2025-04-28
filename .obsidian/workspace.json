@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "5.1-fixed-sliding-window.md",
+                "file": "5.2-flexible-sliding-window.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "5.1-fixed-sliding-window"
+              "title": "5.2-flexible-sliding-window"
             }
           }
         ],
@@ -171,13 +171,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "5.1-fixed-sliding-window.md",
+                "file": "5.2-flexible-sliding-window.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 5.1-fixed-sliding-window"
+              "title": "Outline of 5.2-flexible-sliding-window"
             }
           }
         ],
@@ -197,16 +197,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5e5f43e77b722ba4",
+  "active": "fc2a269994667c5e",
   "lastOpenFiles": [
-    "4.1-fast-and-slow-pointers.md",
-    "4-two-pointers.md",
     "5.1-fixed-sliding-window.md",
-    "6-binary-search.md",
-    "3-stack.md",
+    "5.2-flexible-sliding-window.md",
     "1-arrays-and-hashing.md",
-    "filter.md",
+    "3-stack.md",
+    "4-two-pointers.md",
+    "4.1-fast-and-slow-pointers.md",
+    "6-binary-search.md",
     "7-linked-list.md",
+    "filter.md",
     "8-tree.md",
     "warmup.md",
     "README.md",

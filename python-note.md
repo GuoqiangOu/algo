@@ -71,3 +71,10 @@ while curr:
 	curr = tmp
 return prev
 
+# to check more than one conditions in one line
+# [1234. Replace the Substring for Balanced String](https://leetcode.com/problems/replace-the-substring-for-balanced-string/)
+# `all()` checks if every value in the generator is `True`.
+while all(counts[c] <= target for c in 'QWER'):
+# equals to below 
+while counts['Q'] <= target and counts['W'] <= target \\
+and counts['E'] <= target and counts['R'] <= target:

@@ -78,3 +78,9 @@ while all(counts[c] <= target for c in 'QWER'):
 # equals to below 
 while counts['Q'] <= target and counts['W'] <= target \\
 and counts['E'] <= target and counts['R'] <= target:
+
+# to compare two counters, python will ignore the key only appear in one counter
+# [76. Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/)
+A = {'A': 2, 'B': 2, 'C': 2, 'D': 1}
+B = {'A': 3, 'B': 2, 'C': 2}
+# A >= B is False

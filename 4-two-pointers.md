@@ -1,4 +1,181 @@
 # Two Pointers
+## [灵茶山艾府](https://leetcode.cn/discuss/post/3578981/ti-dan-hua-dong-chuang-kou-ding-chang-bu-rzz7/)
+
+### Opposite direction --><--
+- Starts at both ends (`left=0`, `right=n-1`).
+- Moves toward each other (`left++`, `right--`).
+- Used in problems like **Two Sum, Palindrome checks, and partitioning**.
+#### Template
+```python
+def two_pointers_opposite(arr):
+    left, right = 0, len(arr) - 1
+    while left < right:
+        # Process current elements
+        current = process(arr[left], arr[right])
+        # Update pointers based on condition
+        if condition(arr[left], arr[right]):
+            left += 1
+        else:
+            right -= 1
+```
+
+| #   | Difficulty                                      | Problems                                                                                                                                                                                  |                                 |
+| --- | ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| 1   | <span style="color: green;">Easy</span>         | [344. Reverse String](https://leetcode.com/problems/reverse-string/)                                                                                                                      | <input type="checkbox" checked> |
+| 2   | <span style="color: green;">Easy</span>         | [125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)                                                                                                                  | <input type="checkbox" checked> |
+| 3   | <span style="color: orange;">Medium</span> 1502 | [1750. Minimum Length of String After Deleting Similar Ends](https://leetcode.com/problems/minimum-length-of-string-after-deleting-similar-ends/)                                         | <input type="checkbox" checked> |
+| 4   | <span style="color: orange;">Medium</span> 1507 | [2105. Watering Plants II](https://leetcode.com/problems/watering-plants-ii/)                                                                                                             | <input type="checkbox" checked> |
+| 5   | <span style="color: green;">Easy</span>         | [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/)                                                                                                | <input type="checkbox" checked> |
+| 6   | <span style="color: orange;">Medium</span>      | [658. Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements/)                                                                                                    | <input type="checkbox">         |
+| 7   | <span style="color: orange;">Medium</span>      | [1471. The k Strongest Values in an Array](https://leetcode.com/problems/the-k-strongest-values-in-an-array/)                                                                             | <input type="checkbox">         |
+| 8   | <span style="color: orange;">Medium</span>      | [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)                                                                                | <input type="checkbox">         |
+| 9   | <span style="color: orange;">Medium</span>      | [633. Sum of Square Numbers](https://leetcode.com/problems/sum-of-square-numbers/)                                                                                                        | <input type="checkbox">         |
+| 10  | <span style="color: green;">Easy</span>         | [2824. Count Pairs Whose Sum is Less than Target](https://leetcode.com/problems/count-pairs-whose-sum-is-less-than-target/)                                                               | <input type="checkbox">         |
+| 11  | <span style="color: orange;">Medium</span>      | [2563. Count the Number of Fair Pairs](https://leetcode.com/problems/count-the-number-of-fair-pairs/)                                                                                     | <input type="checkbox">         |
+| 12  | <span style="color: green;">Easy</span> 2824    | [LCP 28. 采购方案](https://leetcode.cn/problems/4xy4Wx/)                                                                                                                                      | <input type="checkbox">         |
+| 13  | <span style="color: orange;">Medium</span>      | [15. 3Sum](https://leetcode.com/problems/3sum/)                                                                                                                                           | <input type="checkbox">         |
+| 14  | <span style="color: orange;">Medium</span>      | [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/)                                                                                                                           | <input type="checkbox">         |
+| 15  | <span style="color: orange;">Medium</span>      | [18. 4Sum](https://leetcode.com/problems/4sum/)                                                                                                                                           | <input type="checkbox">         |
+| 16  | <span style="color: orange;">Medium</span>      | [611. Valid Triangle Number](https://leetcode.com/problems/valid-triangle-number/)                                                                                                        | <input type="checkbox">         |
+| 17  | <span style="color: orange;">Medium</span>      | [1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers](https://leetcode.com/problems/number-of-ways-where-square-of-number-is-equal-to-product-of-two-numbers/) | <input type="checkbox">         |
+| 18  | <span style="color: orange;">Medium</span> 1711 | [923. 3Sum With Multiplicity](https://leetcode.com/problems/3sum-with-multiplicity/)                                                                                                      | <input type="checkbox">         |
+| 19  | <span style="color: orange;">Medium</span> 1762 | [948. Bag of Tokens](https://leetcode.com/problems/bag-of-tokens/)                                                                                                                        | <input type="checkbox">         |
+| 20  | <span style="color: orange;">Medium</span>      | * [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)                                                                                               | <input type="checkbox">         |
+| 21  | <span style="color: red;">Hard</span>           | * [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)                                                                                                           | <input type="checkbox">         |
+| 22  | <span style="color: orange;">Medium</span> 1868 | [1616. Split Two Strings to Make Palindrome](https://leetcode.com/problems/split-two-strings-to-make-palindrome/)                                                                         | <input type="checkbox">         |
+| 23  | <span style="color: orange;">Medium</span> 2276 | [1498. Number of Subsequences That Satisfy the Given Sum Condition](https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/)                           | <input type="checkbox">         |
+| 24  | <span style="color: red;">Hard</span> 2457      | [1782. Count Pairs Of Nodes](https://leetcode.com/problems/count-pairs-of-nodes/)                                                                                                         | <input type="checkbox">         |
+| 25  | <span style="color: green;">Easy</span>         | [1099. Two Sum Less Than K](https://leetcode.com/problems/two-sum-less-than-k/)                                                                                                           | <input type="checkbox">         |
+| 26  | <span style="color: orange;">Medium</span>      | [360. Sort Transformed Array](https://leetcode.com/problems/sort-transformed-array/)                                                                                                      | <input type="checkbox">         |
+| 27  | <span style="color: orange;">Medium</span>      | [2422. Merge Operations to Turn Array Into a Palindrome](https://leetcode.com/problems/merge-operations-to-turn-array-into-a-palindrome/)                                                 | <input type="checkbox">         |
+| 28  | <span style="color: orange;">Medium</span>      | [259. 3Sum Smaller](https://leetcode.com/problems/3sum-smaller/)                                                                                                                          | <input type="checkbox">         |
+#### [344. Reverse String](https://leetcode.com/problems/reverse-string/)
+```python
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        n = len(s)
+        left, right = 0, n - 1
+        while left < right:
+            # swap
+            s[left], s[right] = s[right], s[left]
+            # update pointers
+            left += 1
+            right -= 1
+```
+#### [125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)
+```python
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        n = len(s)
+        left, right = 0, n - 1
+        while left < right:
+            # skip left non-alphanumeric
+            while left < right and not s[left].lower().isalnum():
+                left += 1
+            # skip right non-alphanumeric
+            while left < right and not s[right].lower().isalnum():
+                right -= 1
+            # compare
+            if s[left].lower() != s[right].lower():
+                return False
+            # update pointers
+            left += 1
+            right -= 1
+        # is palindrome
+        return True
+```
+#### [1750. Minimum Length of String After Deleting Similar Ends](https://leetcode.com/problems/minimum-length-of-string-after-deleting-similar-ends/)
+```python
+class Solution:
+    def minimumLength(self, s: str) -> int:
+        n = len(s)
+        left, right = 0, n - 1
+        while left < right:
+            if s[left] != s[right]:
+                break
+            # update left
+            left += 1
+            # skip duplicates
+            while left < right and s[left] == s[left - 1]:
+                left += 1
+            # update right
+            right -= 1
+            # skip duplicates
+            while left < right and s[right] == s[right + 1]:
+                right -= 1
+        return right - left + 1
+# improved solution
+class Solution:
+    def minimumLength(self, s: str) -> int:
+        n = len(s)
+        left, right = 0, n - 1
+        while left < right and s[left] == s[right]:
+            char = s[left]
+            # update left
+            while left <= right and s[left] == char:
+                left += 1
+            # update right
+            while left <= right and s[right] == char:
+                right -= 1
+        return right - left + 1
+```
+#### [2105. Watering Plants II](https://leetcode.com/problems/watering-plants-ii/)
+I made a mistake on updating before refiling and comparing `currA < 0` instead of the plant.
+```python
+class Solution:
+    def minimumRefill(self, plants: List[int], capacityA: int, capacityB: int) -> int:
+        n = len(plants)
+        left, right = 0, n - 1
+        currA = capacityA
+        currB = capacityB
+        res = 0
+        while left < right:
+            # refill left
+            if currA < plants[left]:
+                currA = capacityA
+                res += 1
+            # update left
+            currA -= plants[left]
+            # refill right
+            if currB < plants[right]:
+                currB = capacityB
+                res += 1
+            # update right
+            currB -= plants[right]
+            # update pointers
+            left += 1
+            right -= 1
+        # handle the case of odd num of plants
+        if left == right and max(currA, currB) < plants[left]:
+            res += 1
+
+        return res
+```
+#### [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/)
+```python
+class Solution:
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        left, right = 0, n - 1
+        res = [0] * n
+        # loop backward to update res array
+        i = n - 1
+        while i >= 0:
+            # get squares
+            left_square = nums[left] ** 2
+            right_square = nums[right] ** 2
+            # update res to be the bigger one
+            if left_square > right_square:
+                res[i] = left_square
+                left += 1
+            else:
+                res[i] = right_square
+                right -= 1
+            # move pointer to left
+            i -= 1
+        return res
+```
+
 
 ## NeetCode
 | #   | Difficulty                                 | Problems                                                                                                   |                         |
@@ -10,25 +187,24 @@
 | 5   | <span style="color: orange;">Medium</span> | [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)                  | <input type="checkbox"> |
 | 6   | <span style="color: red;">Hard</span>      | [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)                              | <input type="checkbox"> |
 
-
 ## Grokking the Coding Interview
 
 | #   | Difficulty                                 | Problems                                                                                                                                                       |                                 |
 | --- | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | 1   | <span style="color: green;">Easy</span>    | [345. Reverse Vowels of a String](https://leetcode.com/problems/reverse-vowels-of-a-string/)                                                                   | <input type="checkbox" checked> |
-| 2   | <span style="color: green;">Easy</span>    | [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)                                                     | <input type="checkbox">         |
-| 3   | <span style="color: green;">Easy</span>    | [Find Non-Duplicate Number Instances (easy)](https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/find-nonduplicate-number-instances-easy) | <input type="checkbox">         |
-| 4   | <span style="color: green;">Easy</span>    | [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/)                                                                     | <input type="checkbox">         |
-| 5   | <span style="color: orange;">Medium</span> | [15. 3Sum](https://leetcode.com/problems/3sum/)                                                                                                                | <input type="checkbox">         |
-| 6   | <span style="color: orange;">Medium</span> | [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/)                                                                                                | <input type="checkbox">         |
-| 7   | <span style="color: orange;">Medium</span> | [Triplet Sum Close to Target (medium)](https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/triplet-sum-close-to-target-medium)            | <input type="checkbox">         |
-| 8   | <span style="color: orange;">Medium</span> | [259. 3Sum Smaller](https://leetcode.com/problems/3sum-smaller/)                                                                                               | <input type="checkbox">         |
-| 9   | <span style="color: orange;">Medium</span> | [75. Sort Colors](https://leetcode.com/problems/sort-colors/)                                                                                                  | <input type="checkbox">         |
-| 10  | <span style="color: orange;">Medium</span> | [18. 4Sum](https://leetcode.com/problems/4sum/)                                                                                                                | <input type="checkbox">         |
-| 11  | <span style="color: green;">Easy</span>    | [844. Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/)                                                                       | <input type="checkbox">         |
-| 12  | <span style="color: orange;">Medium</span> | [581. Shortest Unsorted Continuous Subarray](https://leetcode.com/problems/shortest-unsorted-continuous-subarray/)                                             | <input type="checkbox">         |
+| 2   | <span style="color: green;">Easy</span>    | [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)                                                     | <input type="checkbox" checked> |
+| 3   | <span style="color: green;">Easy</span>    | [Find Non-Duplicate Number Instances (easy)](https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/find-nonduplicate-number-instances-easy) | <input type="checkbox" checked> |
+| 4   | <span style="color: green;">Easy</span>    | [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/)                                                                     | <input type="checkbox" checked> |
+| 5   | <span style="color: orange;">Medium</span> | [15. 3Sum](https://leetcode.com/problems/3sum/)                                                                                                                | <input type="checkbox" checked> |
+| 6   | <span style="color: orange;">Medium</span> | [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/)                                                                                                | <input type="checkbox" checked> |
+| 7   | <span style="color: orange;">Medium</span> | [Triplet Sum Close to Target (medium)](https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/triplet-sum-close-to-target-medium)            | <input type="checkbox" checked> |
+| 8   | <span style="color: orange;">Medium</span> | [259. 3Sum Smaller](https://leetcode.com/problems/3sum-smaller/)                                                                                               | <input type="checkbox" checked> |
+| 9   | <span style="color: orange;">Medium</span> | [75. Sort Colors](https://leetcode.com/problems/sort-colors/)                                                                                                  | <input type="checkbox" checked> |
+| 10  | <span style="color: orange;">Medium</span> | [18. 4Sum](https://leetcode.com/problems/4sum/)                                                                                                                | <input type="checkbox" checked> |
+| 11  | <span style="color: green;">Easy</span>    | [844. Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/)                                                                       | <input type="checkbox" checked> |
+| 12  | <span style="color: orange;">Medium</span> | [581. Shortest Unsorted Continuous Subarray](https://leetcode.com/problems/shortest-unsorted-continuous-subarray/)                                             | <input type="checkbox" checked> |
 
-# [Find Non-Duplicate Number Instances (easy)](https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/find-nonduplicate-number-instances-easy)
+### [Find Non-Duplicate Number Instances (easy)](https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/find-nonduplicate-number-instances-easy)
 ```python
 # Input: [2, 3, 3, 3, 6, 9, 9] 
 # Output: 4 Explanation: The first four elements after moving element will be [2, 3, 6, 9].
@@ -44,7 +220,7 @@ class Solution:
     return res
 ```
 
-## [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/)
+### [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/)
 ```python
 # **Input:** nums = [-4,-1,0,3,10]
 # **Output:** [0,1,9,16,100]
@@ -68,7 +244,7 @@ class Solution:
         return res
 ```
 
-## [15. 3Sum](https://leetcode.com/problems/3sum/)
+### [15. 3Sum](https://leetcode.com/problems/3sum/)
 ```python
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
@@ -100,7 +276,7 @@ class Solution:
         return res
 ```
 
-## [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/)
+### [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/)
 ```python
 class Solution:
     def threeSumClosest(self, nums: List[int], target: int) -> int:
@@ -129,7 +305,7 @@ class Solution:
         return closest
 ```
 
-## [Triplet Sum Close to Target (medium)](https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/triplet-sum-close-to-target-medium)
+### [Triplet Sum Close to Target (medium)](https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/triplet-sum-close-to-target-medium)
 Note: 
 There is additional  condition need to be checked compare to 16. 3Sum Closest, because in addition to 16. 3Sum Closest, below requirement need additional logic:
 	If there are more than one such triplet, return the sum of the triplet with the smallest sum
@@ -162,7 +338,7 @@ class Solution:
     return target_sum - smallest_diff
 ```
 
-## [259. 3Sum Smaller](https://leetcode.com/problems/3sum-smaller/)
+### [259. 3Sum Smaller](https://leetcode.com/problems/3sum-smaller/)
 ```python
 class Solution:
     def threeSumSmaller(self, nums: List[int], target: int) -> int:
@@ -189,7 +365,7 @@ class Solution:
         return count
 ```
 
-## [75. Sort Colors](https://leetcode.com/problems/sort-colors/)
+### [75. Sort Colors](https://leetcode.com/problems/sort-colors/)
 ```python
 class Solution:
     def sortColors(self, nums: List[int]) -> None:
@@ -219,7 +395,7 @@ class Solution:
                 i -= 1
 			i += 1
 ```
-## [18. 4Sum](https://leetcode.com/problems/4sum/)
+### [18. 4Sum](https://leetcode.com/problems/4sum/)
 ```python
 class Solution:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
@@ -267,7 +443,7 @@ class Solution:
 
         return res
 ```
-## [844. Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/)
+### [844. Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/)
 ```python
 class Solution:
     def backspaceCompare(self, s: str, t: str) -> bool:
@@ -303,7 +479,7 @@ class Solution:
         return True
 ```
 
-## [581. Shortest Unsorted Continuous Subarray](https://leetcode.com/problems/shortest-unsorted-continuous-subarray/)
+### [581. Shortest Unsorted Continuous Subarray](https://leetcode.com/problems/shortest-unsorted-continuous-subarray/)
 ```python
 class Solution:
     def findUnsortedSubarray(self, nums: List[int]) -> int:
@@ -335,3 +511,4 @@ class Solution:
 		# if start and end were not updated, nums is already sorted
         return 0 if start == end else end - start + 1
 ```
+

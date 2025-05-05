@@ -26,16 +26,16 @@ def two_pointers_opposite(arr):
 | 3   | <span style="color: orange;">Medium</span> 1502 | [1750. Minimum Length of String After Deleting Similar Ends](https://leetcode.com/problems/minimum-length-of-string-after-deleting-similar-ends/)                                         | <input type="checkbox" checked> |
 | 4   | <span style="color: orange;">Medium</span> 1507 | [2105. Watering Plants II](https://leetcode.com/problems/watering-plants-ii/)                                                                                                             | <input type="checkbox" checked> |
 | 5   | <span style="color: green;">Easy</span>         | [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/)                                                                                                | <input type="checkbox" checked> |
-| 6   | <span style="color: orange;">Medium</span>      | [658. Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements/)                                                                                                    | <input type="checkbox">         |
-| 7   | <span style="color: orange;">Medium</span>      | [1471. The k Strongest Values in an Array](https://leetcode.com/problems/the-k-strongest-values-in-an-array/)                                                                             | <input type="checkbox">         |
-| 8   | <span style="color: orange;">Medium</span>      | [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)                                                                                | <input type="checkbox">         |
-| 9   | <span style="color: orange;">Medium</span>      | [633. Sum of Square Numbers](https://leetcode.com/problems/sum-of-square-numbers/)                                                                                                        | <input type="checkbox">         |
-| 10  | <span style="color: green;">Easy</span>         | [2824. Count Pairs Whose Sum is Less than Target](https://leetcode.com/problems/count-pairs-whose-sum-is-less-than-target/)                                                               | <input type="checkbox">         |
-| 11  | <span style="color: orange;">Medium</span>      | [2563. Count the Number of Fair Pairs](https://leetcode.com/problems/count-the-number-of-fair-pairs/)                                                                                     | <input type="checkbox">         |
-| 12  | <span style="color: green;">Easy</span> 2824    | [LCP 28. 采购方案](https://leetcode.cn/problems/4xy4Wx/)                                                                                                                                      | <input type="checkbox">         |
-| 13  | <span style="color: orange;">Medium</span>      | [15. 3Sum](https://leetcode.com/problems/3sum/)                                                                                                                                           | <input type="checkbox">         |
-| 14  | <span style="color: orange;">Medium</span>      | [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/)                                                                                                                           | <input type="checkbox">         |
-| 15  | <span style="color: orange;">Medium</span>      | [18. 4Sum](https://leetcode.com/problems/4sum/)                                                                                                                                           | <input type="checkbox">         |
+| 6   | <span style="color: orange;">Medium</span>      | [658. Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements/)                                                                                                    | <input type="checkbox" checked> |
+| 7   | <span style="color: orange;">Medium</span>      | [1471. The k Strongest Values in an Array](https://leetcode.com/problems/the-k-strongest-values-in-an-array/)                                                                             | <input type="checkbox" checked> |
+| 8   | <span style="color: orange;">Medium</span>      | [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)                                                                                | <input type="checkbox" checked> |
+| 9   | <span style="color: orange;">Medium</span>      | [633. Sum of Square Numbers](https://leetcode.com/problems/sum-of-square-numbers/)                                                                                                        | <input type="checkbox" checked> |
+| 10  | <span style="color: green;">Easy</span>         | [2824. Count Pairs Whose Sum is Less than Target](https://leetcode.com/problems/count-pairs-whose-sum-is-less-than-target/)                                                               | <input type="checkbox" checked> |
+| 11  | <span style="color: orange;">Medium</span>      | * [2563. Count the Number of Fair Pairs](https://leetcode.com/problems/count-the-number-of-fair-pairs/)                                                                                   | <input type="checkbox" checked> |
+| 12  | <span style="color: green;">Easy</span>         | [LCP 28. 采购方案](https://leetcode.cn/problems/4xy4Wx/)                                                                                                                                      | <input type="checkbox" checked> |
+| 13  | <span style="color: orange;">Medium</span>      | [15. 3Sum](https://leetcode.com/problems/3sum/)                                                                                                                                           | <input type="checkbox" checked> |
+| 14  | <span style="color: orange;">Medium</span>      | [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/)                                                                                                                           | <input type="checkbox" checked> |
+| 15  | <span style="color: orange;">Medium</span>      | [18. 4Sum](https://leetcode.com/problems/4sum/)                                                                                                                                           | <input type="checkbox" checked> |
 | 16  | <span style="color: orange;">Medium</span>      | [611. Valid Triangle Number](https://leetcode.com/problems/valid-triangle-number/)                                                                                                        | <input type="checkbox">         |
 | 17  | <span style="color: orange;">Medium</span>      | [1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers](https://leetcode.com/problems/number-of-ways-where-square-of-number-is-equal-to-product-of-two-numbers/) | <input type="checkbox">         |
 | 18  | <span style="color: orange;">Medium</span> 1711 | [923. 3Sum With Multiplicity](https://leetcode.com/problems/3sum-with-multiplicity/)                                                                                                      | <input type="checkbox">         |
@@ -175,8 +175,272 @@ class Solution:
             i -= 1
         return res
 ```
+#### [658. Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements/)
+```python
+class Solution:
+    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
+        n = len(arr)
+        left, right = 0, n - 1
+        while left < right:
+            # we have the res
+            if right - left + 1 == k:
+                return arr[left:right + 1]
+            # calculate the differences
+            left_num = abs(arr[left] - x)
+            right_num = abs(arr[right] - x)
+            # if left is closer, we ignore right
+            # from the problem statement we can use:
+            # if left_num < right_num or left_num == right_num and arr[left] < arr[right]:
+            # which is the same as below
+            if left_num > right_num:
+                right -= 1
+            else:
+                left += 1
+```
+#### [1471. The k Strongest Values in an Array](https://leetcode.com/problems/the-k-strongest-values-in-an-array/)
+```python
+class Solution:
+    def getStrongest(self, arr: List[int], k: int) -> List[int]:
+        n = len(arr)
+        arr.sort()
+        m = arr[(n - 1) // 2]
+        left, right = 0, n - 1
+        res = []
+        while k:
+            left_val = abs(arr[left] - m)
+            right_val = abs(arr[right] - m)
+            # pick left
+            # from the problem statement we can use:
+            # if left_val > right_val or left_val == right_val and arr[left] > arr[right]:
+            # which is the same as below
+            if left_val > right_val:
+                res.append(arr[left])
+                left += 1
+            # pick right
+            else:
+                res.append(arr[right])
+                right -= 1
+            k -= 1
+        return res
+```
+#### [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
+```python
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        n = len(numbers)
+        left, right = 0, n - 1
+        while left < right:
+            curr_sum = numbers[left] + numbers[right]
+            if curr_sum > target:
+                right -= 1
+            elif curr_sum < target:
+                left += 1
+            else:
+                return [left + 1, right + 1]
+```
+#### [633. Sum of Square Numbers](https://leetcode.com/problems/sum-of-square-numbers/)
+```python
+class Solution:
+    def judgeSquareSum(self, c: int) -> bool:
+        # idea:
+        # think of this problem as searching a and b
+        # in the array of [a, a+1,...,b-1,b], where a^2 + b^2 = c,
+        # where a = 0, b is the largest integer such that b^2 <= c
+        left, right = 0, isqrt(c)
+        while left < right:
+            curr = left ** 2 + right ** 2
+            if curr == c:
+                return True
+            elif curr < c:
+                left += 1
+            else:
+                right -= 1
+        return False
+```
+#### [2824. Count Pairs Whose Sum is Less than Target](https://leetcode.com/problems/count-pairs-whose-sum-is-less-than-target/)
+```python
+class Solution:
+    def countPairs(self, nums: List[int], target: int) -> int:
+        nums.sort()
+        n = len(nums)
+        left, right = 0, n - 1
+        res = 0
+        while left < right:
+            _sum = nums[left] + nums[right]
+            if _sum < target:
+                # because it's sorted
+                # left + right < target, left + 1 + right < target,...,
+                # right-1 + right < target,
+                # so we have right - left pairs
+                res += right - left
+                left += 1
+            else:
+                right -= 1
+        return res
+```
+#### [2563. Count the Number of Fair Pairs](https://leetcode.com/problems/count-the-number-of-fair-pairs/)
+```python
+class Solution:
+    def countFairPairs(self, nums: List[int], lower: int, upper: int) -> int:
+        # we want lower <= nums[i] + nums[j] <= upper
+        # if we are counting for each i to find the number of j,
+        # we need to find num of j in:
+        # 1. nums[j] <= upper - nums[i]
+        #    --> count(upper)
+        # 2. nums[j] < lower - nums[i] which is
+        #    nums[j] <= lower - 1 - nums[i]
+        #    --> count(lower - 1)
+        # ans we need is count(upper) - count(lower - 1)
+        # note: 
+        # it can also be count(upper + 1) - count(lower),
+        # but in the helper func, it's sum < upper instead of sum <= upper
 
+        # How to find count(upper):
+        # 1. if nums[i] + nums[j] <= upper
+        #    then nums[i] + nums[j - 1] <= upper
+        #    all js within [i + 1, j] can pair with i
+        #    so, we can add j - i number of res
 
+        # 2. if nums[i] + nums[j] > upper
+        #    then all js withint [i, j - 1] can NOT pair with i
+        #    so, we skip j
+        nums.sort()
+
+        def count(val: int) -> int:
+            n = len(nums)
+            left, right = 0, n - 1
+            res = 0
+            while left < right:
+                _sum = nums[left] + nums[right]
+                if _sum <= val:
+                    res += right - left
+                    left += 1
+                else:
+                    right -= 1
+            return res
+        return count(upper) - count(lower - 1)
+```
+
+#### [LCP 28. 采购方案](https://leetcode.cn/problems/4xy4Wx/)
+Question as to find num of pair of components which smaller or equal to budget(target),
+if `[left, right]` is smaller equal to target, `[left+1, right]` are all smaller equal to target,
+so we need to add `right - lefet` to result
+
+I still don't understand the use or meaning of `mod 1e9 + 7 (1000000007)`
+```python
+class Solution:
+    def purchasePlans(self, nums: List[int], target: int) -> int:
+        nums.sort()
+        res = 0
+        left, right = 0, len(nums) - 1
+        while left < right:
+            if nums[left] + nums[right] <= target:
+                res += right - left
+                left += 1
+            else:
+                right -= 1
+        return res % 1000000007
+```
+#### [15. 3Sum](https://leetcode.com/problems/3sum/)
+```python
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        # idea, for each of num, we do two sum
+        nums.sort()
+        n = len(nums)
+        ans = []
+        for i in range(n - 2):
+            # skip duplicates
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            # do two sum
+            left, right = i + 1, n - 1
+            while left < right:
+                _sum = nums[i] + nums[left] + nums[right]
+                if _sum == 0:
+                    ans.append([nums[i], nums[left], nums[right]])
+                    left += 1
+                    right -= 1
+                    # skip left duplicates
+                    while left < right and nums[left] == nums[left - 1]:
+                        left += 1
+                    # skip right duplicates
+                    while left < right and nums[right] == nums[right + 1]:
+                        right -= 1
+                elif _sum > 0:
+                    right -= 1
+                else:
+                    left += 1
+        return ans
+```
+#### [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/)
+I made a mistake of forgetting to sort the arr, remember to sort!
+```python
+class Solution:
+    def threeSumClosest(self, nums: List[int], target: int) -> int:
+        nums.sort()
+        n = len(nums)
+        res = inf
+        for i in range(n - 2):
+            # skip duplicates
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            # do two sum
+            l, r = i + 1, n - 1
+            while l < r:
+                _sum = nums[i] + nums[l] + nums[r]
+                # equal is the closest
+                if _sum == target:
+                    return _sum
+                # update res if we find a closer sum
+                if abs(target - _sum) < abs(target - res):
+                    res = _sum
+                # two sum logic to move pointers
+                if _sum < target:
+                    l += 1
+                else:
+                    r -= 1
+        return res
+```
+#### [18. 4Sum](https://leetcode.com/problems/4sum/)
+```python
+class Solution:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        # idea
+        # for each num do 3 sum
+        #   for each num do 2 sum
+        nums.sort()
+        n = len(nums)
+        res = []
+        # 4 sum
+        for i in range(n - 3):
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            # 3 sum
+            for j in range(i + 1, n - 2):
+                if j > i + 1 and nums[j] == nums[j - 1]:
+                    continue
+                # 2 sum
+                l, r = j + 1, n - 1
+                while l < r:
+                    _sum = nums[i] + nums[j] + nums[l] + nums[r]
+                    if _sum == target:
+                        res.append([nums[i], nums[j], nums[l], nums[r]])
+                        l += 1
+                        # skip duplicates
+                        while l < r and nums[l] == nums[l - 1]:
+                            l += 1
+                        r -= 1
+                        # skip duplicates
+                        while l < r and nums[r] == nums[r + 1]:
+                            r -= 1
+                    elif _sum < target:
+                        l += 1
+                    else:
+                        r -= 1
+        return res
+```
+#### 
 ## NeetCode
 | #   | Difficulty                                 | Problems                                                                                                   |                         |
 | --- | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------- | ----------------------- |

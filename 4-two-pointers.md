@@ -36,7 +36,7 @@ def two_pointers_opposite(arr):
 | 13  | <span style="color: orange;">Medium</span>      | [15. 3Sum](https://leetcode.com/problems/3sum/)                                                                                                                                           | <input type="checkbox" checked> |
 | 14  | <span style="color: orange;">Medium</span>      | [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/)                                                                                                                           | <input type="checkbox" checked> |
 | 15  | <span style="color: orange;">Medium</span>      | [18. 4Sum](https://leetcode.com/problems/4sum/)                                                                                                                                           | <input type="checkbox" checked> |
-| 16  | <span style="color: orange;">Medium</span>      | [611. Valid Triangle Number](https://leetcode.com/problems/valid-triangle-number/)                                                                                                        | <input type="checkbox">         |
+| 16  | <span style="color: orange;">Medium</span>      | * [611. Valid Triangle Number](https://leetcode.com/problems/valid-triangle-number/)                                                                                                      | <input type="checkbox" checked> |
 | 17  | <span style="color: orange;">Medium</span>      | [1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers](https://leetcode.com/problems/number-of-ways-where-square-of-number-is-equal-to-product-of-two-numbers/) | <input type="checkbox">         |
 | 18  | <span style="color: orange;">Medium</span> 1711 | [923. 3Sum With Multiplicity](https://leetcode.com/problems/3sum-with-multiplicity/)                                                                                                      | <input type="checkbox">         |
 | 19  | <span style="color: orange;">Medium</span> 1762 | [948. Bag of Tokens](https://leetcode.com/problems/bag-of-tokens/)                                                                                                                        | <input type="checkbox">         |
@@ -440,7 +440,44 @@ class Solution:
                         r -= 1
         return res
 ```
-#### 
+#### [611. Valid Triangle Number](https://leetcode.com/problems/valid-triangle-number/)
+From the example 1, we can see `(2,3,4)` in result but not `(4,3,2)`, 
+so we need to skip duplicates,
+then we can define `1 <= a <= b <= c`, 
+this can prevent to double count `(a,b,c)` and `(c,b,a)`,
+since the sum of two edges of triangle is bigger than the 3rd, we know
+`a + b > c` 
+`a + c > b` 
+`b + c > a`
+from above inequations, since `1 <= a <= b <= c`,
+`a + c > b` has to be true because `a + c >= a + b > b,`
+`b + c > a` has to be true as well because `b + c >= a + a = 2a > a`,
+therefore, we just need to consider the first inequation `a + b > c`,
+and the question now becomes as below:
+
+Find the numbers of triplets where `1 <= a <= b <= c` and `a + b > c`
+
+```python
+class Solution:
+    def triangleNumber(self, nums: List[int]) -> int:
+        # Find the numbers of triplets
+        # where 1 <= a <= b <= c
+        # and a + b > c
+        nums.sort()  # this make sure 1 <= a <= b <= c
+        ans = 0
+        # starting from index 2 because we are enumerating with c
+        for k in range(2, len(nums)):
+            c = nums[k]
+            i, j = 0, k - 1
+            while i < j:
+                a, b = nums[i], nums[j]
+                if a + b > c:
+                    ans += j - i
+                    j -= 1
+                else:
+                    i += 1
+        return ans
+```
 ## NeetCode
 | #   | Difficulty                                 | Problems                                                                                                   |                         |
 | --- | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------- | ----------------------- |

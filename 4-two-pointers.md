@@ -19,36 +19,36 @@ def two_pointers_opposite(arr):
             right -= 1
 ```
 
-| #   | Difficulty                                      | Problems                                                                                                                                                                                  |                                 |
-| --- | ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| 1   | <span style="color: green;">Easy</span>         | [344. Reverse String](https://leetcode.com/problems/reverse-string/)                                                                                                                      | <input type="checkbox" checked> |
-| 2   | <span style="color: green;">Easy</span>         | [125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)                                                                                                                  | <input type="checkbox" checked> |
-| 3   | <span style="color: orange;">Medium</span> 1502 | [1750. Minimum Length of String After Deleting Similar Ends](https://leetcode.com/problems/minimum-length-of-string-after-deleting-similar-ends/)                                         | <input type="checkbox" checked> |
-| 4   | <span style="color: orange;">Medium</span> 1507 | [2105. Watering Plants II](https://leetcode.com/problems/watering-plants-ii/)                                                                                                             | <input type="checkbox" checked> |
-| 5   | <span style="color: green;">Easy</span>         | [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/)                                                                                                | <input type="checkbox" checked> |
-| 6   | <span style="color: orange;">Medium</span>      | [658. Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements/)                                                                                                    | <input type="checkbox" checked> |
-| 7   | <span style="color: orange;">Medium</span>      | [1471. The k Strongest Values in an Array](https://leetcode.com/problems/the-k-strongest-values-in-an-array/)                                                                             | <input type="checkbox" checked> |
-| 8   | <span style="color: orange;">Medium</span>      | [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)                                                                                | <input type="checkbox" checked> |
-| 9   | <span style="color: orange;">Medium</span>      | [633. Sum of Square Numbers](https://leetcode.com/problems/sum-of-square-numbers/)                                                                                                        | <input type="checkbox" checked> |
-| 10  | <span style="color: green;">Easy</span>         | [2824. Count Pairs Whose Sum is Less than Target](https://leetcode.com/problems/count-pairs-whose-sum-is-less-than-target/)                                                               | <input type="checkbox" checked> |
-| 11  | <span style="color: orange;">Medium</span>      | * [2563. Count the Number of Fair Pairs](https://leetcode.com/problems/count-the-number-of-fair-pairs/)                                                                                   | <input type="checkbox" checked> |
-| 12  | <span style="color: green;">Easy</span>         | [LCP 28. 采购方案](https://leetcode.cn/problems/4xy4Wx/)                                                                                                                                      | <input type="checkbox" checked> |
-| 13  | <span style="color: orange;">Medium</span>      | [15. 3Sum](https://leetcode.com/problems/3sum/)                                                                                                                                           | <input type="checkbox" checked> |
-| 14  | <span style="color: orange;">Medium</span>      | [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/)                                                                                                                           | <input type="checkbox" checked> |
-| 15  | <span style="color: orange;">Medium</span>      | [18. 4Sum](https://leetcode.com/problems/4sum/)                                                                                                                                           | <input type="checkbox" checked> |
-| 16  | <span style="color: orange;">Medium</span>      | * [611. Valid Triangle Number](https://leetcode.com/problems/valid-triangle-number/)                                                                                                      | <input type="checkbox" checked> |
-| 17  | <span style="color: orange;">Medium</span>      | [1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers](https://leetcode.com/problems/number-of-ways-where-square-of-number-is-equal-to-product-of-two-numbers/) | <input type="checkbox">         |
-| 18  | <span style="color: orange;">Medium</span> 1711 | [923. 3Sum With Multiplicity](https://leetcode.com/problems/3sum-with-multiplicity/)                                                                                                      | <input type="checkbox">         |
-| 19  | <span style="color: orange;">Medium</span> 1762 | [948. Bag of Tokens](https://leetcode.com/problems/bag-of-tokens/)                                                                                                                        | <input type="checkbox">         |
-| 20  | <span style="color: orange;">Medium</span>      | * [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)                                                                                               | <input type="checkbox">         |
-| 21  | <span style="color: red;">Hard</span>           | * [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)                                                                                                           | <input type="checkbox">         |
-| 22  | <span style="color: orange;">Medium</span> 1868 | [1616. Split Two Strings to Make Palindrome](https://leetcode.com/problems/split-two-strings-to-make-palindrome/)                                                                         | <input type="checkbox">         |
-| 23  | <span style="color: orange;">Medium</span> 2276 | [1498. Number of Subsequences That Satisfy the Given Sum Condition](https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/)                           | <input type="checkbox">         |
-| 24  | <span style="color: red;">Hard</span> 2457      | [1782. Count Pairs Of Nodes](https://leetcode.com/problems/count-pairs-of-nodes/)                                                                                                         | <input type="checkbox">         |
-| 25  | <span style="color: green;">Easy</span>         | [1099. Two Sum Less Than K](https://leetcode.com/problems/two-sum-less-than-k/)                                                                                                           | <input type="checkbox">         |
-| 26  | <span style="color: orange;">Medium</span>      | [360. Sort Transformed Array](https://leetcode.com/problems/sort-transformed-array/)                                                                                                      | <input type="checkbox">         |
-| 27  | <span style="color: orange;">Medium</span>      | [2422. Merge Operations to Turn Array Into a Palindrome](https://leetcode.com/problems/merge-operations-to-turn-array-into-a-palindrome/)                                                 | <input type="checkbox">         |
-| 28  | <span style="color: orange;">Medium</span>      | [259. 3Sum Smaller](https://leetcode.com/problems/3sum-smaller/)                                                                                                                          | <input type="checkbox">         |
+| #   | Difficulty                                      | Problems                                                                                                                                                                                    |                                 |
+| --- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| 1   | <span style="color: green;">Easy</span>         | [344. Reverse String](https://leetcode.com/problems/reverse-string/)                                                                                                                        | <input type="checkbox" checked> |
+| 2   | <span style="color: green;">Easy</span>         | [125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)                                                                                                                    | <input type="checkbox" checked> |
+| 3   | <span style="color: orange;">Medium</span> 1502 | [1750. Minimum Length of String After Deleting Similar Ends](https://leetcode.com/problems/minimum-length-of-string-after-deleting-similar-ends/)                                           | <input type="checkbox" checked> |
+| 4   | <span style="color: orange;">Medium</span> 1507 | [2105. Watering Plants II](https://leetcode.com/problems/watering-plants-ii/)                                                                                                               | <input type="checkbox" checked> |
+| 5   | <span style="color: green;">Easy</span>         | [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/)                                                                                                  | <input type="checkbox" checked> |
+| 6   | <span style="color: orange;">Medium</span>      | [658. Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements/)                                                                                                      | <input type="checkbox" checked> |
+| 7   | <span style="color: orange;">Medium</span>      | [1471. The k Strongest Values in an Array](https://leetcode.com/problems/the-k-strongest-values-in-an-array/)                                                                               | <input type="checkbox" checked> |
+| 8   | <span style="color: orange;">Medium</span>      | [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)                                                                                  | <input type="checkbox" checked> |
+| 9   | <span style="color: orange;">Medium</span>      | [633. Sum of Square Numbers](https://leetcode.com/problems/sum-of-square-numbers/)                                                                                                          | <input type="checkbox" checked> |
+| 10  | <span style="color: green;">Easy</span>         | [2824. Count Pairs Whose Sum is Less than Target](https://leetcode.com/problems/count-pairs-whose-sum-is-less-than-target/)                                                                 | <input type="checkbox" checked> |
+| 11  | <span style="color: orange;">Medium</span>      | * [2563. Count the Number of Fair Pairs](https://leetcode.com/problems/count-the-number-of-fair-pairs/)                                                                                     | <input type="checkbox" checked> |
+| 12  | <span style="color: green;">Easy</span>         | [LCP 28. 采购方案](https://leetcode.cn/problems/4xy4Wx/)                                                                                                                                        | <input type="checkbox" checked> |
+| 13  | <span style="color: orange;">Medium</span>      | [15. 3Sum](https://leetcode.com/problems/3sum/)                                                                                                                                             | <input type="checkbox" checked> |
+| 14  | <span style="color: orange;">Medium</span>      | [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/)                                                                                                                             | <input type="checkbox" checked> |
+| 15  | <span style="color: orange;">Medium</span>      | [18. 4Sum](https://leetcode.com/problems/4sum/)                                                                                                                                             | <input type="checkbox" checked> |
+| 16  | <span style="color: orange;">Medium</span>      | * [611. Valid Triangle Number](https://leetcode.com/problems/valid-triangle-number/)                                                                                                        | <input type="checkbox" checked> |
+| 17  | <span style="color: orange;">Medium</span>      | * [1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers](https://leetcode.com/problems/number-of-ways-where-square-of-number-is-equal-to-product-of-two-numbers/) | <input type="checkbox">         |
+| 18  | <span style="color: orange;">Medium</span> 1711 | [923. 3Sum With Multiplicity](https://leetcode.com/problems/3sum-with-multiplicity/)                                                                                                        | <input type="checkbox">         |
+| 19  | <span style="color: orange;">Medium</span> 1762 | [948. Bag of Tokens](https://leetcode.com/problems/bag-of-tokens/)                                                                                                                          | <input type="checkbox">         |
+| 20  | <span style="color: orange;">Medium</span>      | * [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)                                                                                                 | <input type="checkbox">         |
+| 21  | <span style="color: red;">Hard</span>           | * [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)                                                                                                             | <input type="checkbox">         |
+| 22  | <span style="color: orange;">Medium</span> 1868 | [1616. Split Two Strings to Make Palindrome](https://leetcode.com/problems/split-two-strings-to-make-palindrome/)                                                                           | <input type="checkbox">         |
+| 23  | <span style="color: orange;">Medium</span> 2276 | [1498. Number of Subsequences That Satisfy the Given Sum Condition](https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/)                             | <input type="checkbox">         |
+| 24  | <span style="color: red;">Hard</span> 2457      | [1782. Count Pairs Of Nodes](https://leetcode.com/problems/count-pairs-of-nodes/)                                                                                                           | <input type="checkbox">         |
+| 25  | <span style="color: green;">Easy</span>         | [1099. Two Sum Less Than K](https://leetcode.com/problems/two-sum-less-than-k/)                                                                                                             | <input type="checkbox" checked> |
+| 26  | <span style="color: orange;">Medium</span>      | [360. Sort Transformed Array](https://leetcode.com/problems/sort-transformed-array/)                                                                                                        | <input type="checkbox">         |
+| 27  | <span style="color: orange;">Medium</span>      | [2422. Merge Operations to Turn Array Into a Palindrome](https://leetcode.com/problems/merge-operations-to-turn-array-into-a-palindrome/)                                                   | <input type="checkbox">         |
+| 28  | <span style="color: orange;">Medium</span>      | [259. 3Sum Smaller](https://leetcode.com/problems/3sum-smaller/)                                                                                                                            | <input type="checkbox">         |
 #### [344. Reverse String](https://leetcode.com/problems/reverse-string/)
 ```python
 class Solution:
@@ -477,6 +477,31 @@ class Solution:
                 else:
                     i += 1
         return ans
+```
+#### [1099. Two Sum Less Than K](https://leetcode.com/problems/two-sum-less-than-k/)
+I made a mistake on also decreasing r when `sum < k` which is not needed.
+```python
+# Input: nums = [34,23,1,24,75,33,54,8], k = 60
+# Output: 58
+# Explanation: We can use 34 and 24 to sum 58 which is less than 60.
+
+# Input: nums = [10,20,30], k = 15
+# Output: -1
+# Explanation: In this case it is not possible to get a pair sum less that 15.
+class Solution:
+    def twoSumLessThanK(self, nums: List[int], k: int) -> int:
+        nums.sort()
+        n = len(nums)
+        l, r = 0, n - 1
+        res = -1
+        while l < r:
+            _sum = nums[l] + nums[r]
+            if _sum < k:
+                res = max(res, _sum)
+                l += 1
+            else:
+                r -= 1
+        return res
 ```
 ## NeetCode
 | #   | Difficulty                                 | Problems                                                                                                   |                         |

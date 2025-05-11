@@ -37,18 +37,18 @@ def two_pointers_opposite(arr):
 | 14  | <span style="color: orange;">Medium</span>      | [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/)                                                                                                                             | <input type="checkbox" checked> |
 | 15  | <span style="color: orange;">Medium</span>      | [18. 4Sum](https://leetcode.com/problems/4sum/)                                                                                                                                             | <input type="checkbox" checked> |
 | 16  | <span style="color: orange;">Medium</span>      | * [611. Valid Triangle Number](https://leetcode.com/problems/valid-triangle-number/)                                                                                                        | <input type="checkbox" checked> |
-| 17  | <span style="color: orange;">Medium</span>      | * [1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers](https://leetcode.com/problems/number-of-ways-where-square-of-number-is-equal-to-product-of-two-numbers/) | <input type="checkbox">         |
-| 18  | <span style="color: orange;">Medium</span> 1711 | [923. 3Sum With Multiplicity](https://leetcode.com/problems/3sum-with-multiplicity/)                                                                                                        | <input type="checkbox">         |
+| 17  | <span style="color: orange;">Medium</span>1711  | * [923. 3Sum With Multiplicity](https://leetcode.com/problems/3sum-with-multiplicity/)                                                                                                      | <input type="checkbox" checked> |
+| 18  | <span style="color: orange;">Medium</span>      | * [1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers](https://leetcode.com/problems/number-of-ways-where-square-of-number-is-equal-to-product-of-two-numbers/) | <input type="checkbox" checked> |
 | 19  | <span style="color: orange;">Medium</span> 1762 | [948. Bag of Tokens](https://leetcode.com/problems/bag-of-tokens/)                                                                                                                          | <input type="checkbox">         |
-| 20  | <span style="color: orange;">Medium</span>      | * [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)                                                                                                 | <input type="checkbox">         |
-| 21  | <span style="color: red;">Hard</span>           | * [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)                                                                                                             | <input type="checkbox">         |
+| 20  | <span style="color: orange;">Medium</span>      | * [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)                                                                                                 | <input type="checkbox" checked> |
+| 21  | <span style="color: red;">Hard</span>           | * [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)                                                                                                             | <input type="checkbox" checked> |
 | 22  | <span style="color: orange;">Medium</span> 1868 | [1616. Split Two Strings to Make Palindrome](https://leetcode.com/problems/split-two-strings-to-make-palindrome/)                                                                           | <input type="checkbox">         |
 | 23  | <span style="color: orange;">Medium</span> 2276 | [1498. Number of Subsequences That Satisfy the Given Sum Condition](https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/)                             | <input type="checkbox">         |
 | 24  | <span style="color: red;">Hard</span> 2457      | [1782. Count Pairs Of Nodes](https://leetcode.com/problems/count-pairs-of-nodes/)                                                                                                           | <input type="checkbox">         |
 | 25  | <span style="color: green;">Easy</span>         | [1099. Two Sum Less Than K](https://leetcode.com/problems/two-sum-less-than-k/)                                                                                                             | <input type="checkbox" checked> |
 | 26  | <span style="color: orange;">Medium</span>      | [360. Sort Transformed Array](https://leetcode.com/problems/sort-transformed-array/)                                                                                                        | <input type="checkbox">         |
 | 27  | <span style="color: orange;">Medium</span>      | [2422. Merge Operations to Turn Array Into a Palindrome](https://leetcode.com/problems/merge-operations-to-turn-array-into-a-palindrome/)                                                   | <input type="checkbox">         |
-| 28  | <span style="color: orange;">Medium</span>      | [259. 3Sum Smaller](https://leetcode.com/problems/3sum-smaller/)                                                                                                                            | <input type="checkbox">         |
+| 28  | <span style="color: orange;">Medium</span>      | [259. 3Sum Smaller](https://leetcode.com/problems/3sum-smaller/)                                                                                                                            | <input type="checkbox" checked> |
 #### [344. Reverse String](https://leetcode.com/problems/reverse-string/)
 ```python
 class Solution:
@@ -344,6 +344,7 @@ class Solution:
 #### [15. 3Sum](https://leetcode.com/problems/3sum/)
 ```python
 class Solution:
+
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         # idea, for each of num, we do two sum
         nums.sort()
@@ -352,6 +353,16 @@ class Solution:
         for i in range(n - 2):
             # skip duplicates
             if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            # improvement 1
+            if nums[i] + nums[i + 1] + nums[i + 2] > 0:
+                # becasue nums[i] + the rest of the nums on right side will always > 0 -> != 0
+                # so we can break
+                break
+            # improvement 2
+            if nums[i] + nums[-2] + nums[-1] < 0:
+                # because nums[i] + the rest of the nums on the left side will always < 0
+                # so we can skip to check for next
                 continue
             # do two sum
             left, right = i + 1, n - 1
@@ -373,6 +384,7 @@ class Solution:
                     left += 1
         return ans
 ```
+
 #### [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/)
 I made a mistake of forgetting to sort the arr, remember to sort!
 ```python
@@ -478,6 +490,230 @@ class Solution:
                     i += 1
         return ans
 ```
+#### [923. 3Sum With Multiplicity](https://leetcode.com/problems/3sum-with-multiplicity/)
+##### * this problem ask for num of tuples which can have duplicates
+If the result is a count, and duplicates are allowed — think combinatorics.
+need to handle nC2, multiple of duplicates
+```python
+class Solution:
+    def threeSumMulti(self, arr: List[int], target: int) -> int:
+        arr.sort()
+        n = len(arr)
+        res = 0
+        _mod = (10 ** 9 + 7)
+        for i in range(n):
+            j, k = i + 1, n - 1
+            while j < k:
+                _sum = arr[i] + arr[j] + arr[k]
+                if _sum == target:
+                    # handle duplicates
+                    # case 1:
+                    if arr[j] == arr[k]:
+                        nums_to_choose = k - j + 1
+                        # we are choosing 2 nums in these many nums_to_choose
+                        # formula of n choose 2 = C(n, 2) = n(n-1)/2
+                        res += nums_to_choose * (nums_to_choose - 1) // 2
+                        # mod within loop is best practice instead of at the end
+                        res %= _mod
+                        # we have calculated all the combinations
+                        break
+                    # case 2:
+                    else:
+                        # count and skip on left/j duplicates
+                        j_duplicates = 1
+                        while j + 1 < k and arr[j] == arr[j + 1]:
+                            j_duplicates += 1
+                            j += 1
+                        # count and skip on right/k duplicates
+                        k_duplicates = 1
+                        while k - 1 > j and arr[k] == arr[k - 1]:
+                            k_duplicates += 1
+                            k -= 1
+                        # the pairs we need is the multiple of the duplicates
+                        res += j_duplicates * k_duplicates
+                        # mod within loop is best practice instead of at the end
+                        res %= _mod
+                        j += 1
+                        k -= 1
+                elif _sum < target:
+                    j += 1
+                else:
+                    k -= 1
+        return res
+```
+
+#### [1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers](https://leetcode.com/problems/number-of-ways-where-square-of-number-is-equal-to-product-of-two-numbers/)
+##### * this problem ask for num of tuples which can have duplicates
+If the result is a count, and duplicates are allowed — think combinatorics.
+need to handle nC2, multiple of duplicates
+##### brute force with hash map
+Time: `O(n^2 + m^2)`
+Space:  `O(n + m)`
+```python
+class Solution:
+    def numTriplets(self, nums1: List[int], nums2: List[int]) -> int:
+        # naive brute force solution:
+        # we care about nums1[i]^2, but there could be duplicates,
+        # e.g. [1,1,2,2],
+        # we can skip the duplicates to store nums1[i]^2 freq in a counter
+        # if we found nums1[i]^2 == nums2[j] * nums2[k]
+        # we increase the res by the the freq
+        # since there's two types,
+        # the total res is count(nums1, nums2) + count(nums2, nums1)
+        def count(nums: List[int], target: List[int]) -> int:
+            # init counter to skip duplicates
+            cnt = Counter()
+            for num in nums:
+                cnt[num * num] += 1
+            # brute forece to check nums1[i]^2 == nums2[j] * nums2[k]
+            n = len(target)
+            res = 0
+            for j in range(n):
+                for k in range(j + 1, n):
+                    mul = target[j] * target[k]
+                    if mul in cnt:
+                        res += cnt[mul]
+            return res
+        # the total res is count(nums1, nums2) + count(nums2, nums1)
+        return count(nums1, nums2) + count(nums2, nums1)
+```
+##### two pointer + sorting
+Time: `O(nlogn) + O(mlogm) + O(n * m) = O(n * m) = O(n^2) if len(n) == len(m)` 
+Space: `O(1)`
+The hard part is to figure out the math to increase the res
+```python
+class Solution:
+    def numTriplets(self, nums1: List[int], nums2: List[int]) -> int:
+        def count(targets: List[int], nums: List[int]) -> int:
+            res = 0
+            for target in targets:
+                square = target * target
+                j, k = 0, len(nums) - 1
+                while j < k:
+                    mul = nums[j] * nums[k]
+                    if mul == square:
+                        if nums[j] == nums[k]:
+                            nums_to_choose = k - j + 1
+                            # we are choosing 2 nums within these many nums_to_choose
+                            # formula of n choose 2 = C(n, 2) = n(n-1)/2
+                            res += nums_to_choose * (nums_to_choose - 1) // 2
+                            # we have calculated all the combinations
+                            break
+                        else:
+                            # count and skip on left/j duplicates
+                            j_duplicates = 1
+                            while j + 1 < k and nums[j] == nums[j + 1]:
+                                j_duplicates += 1
+                                j += 1
+                            # count and skip on right/k duplicates
+                            k_duplicates = 1
+                            while k - 1 > j and nums[k] == nums[k - 1]:
+                                k_duplicates += 1
+                                k -= 1
+                            # the pairs we need is the multiple of the duplicates
+                            res += j_duplicates * k_duplicates
+                            # update pointers
+                            j += 1
+                            k -= 1
+                    elif mul > square:
+                        k -= 1
+                    else:
+                        j += 1
+            return res
+  
+        # sort
+        nums1.sort()
+        nums2.sort()
+  
+        # the total res is count(nums1, nums2) + count(nums2, nums1)
+        return count(nums1, nums2) + count(nums2, nums1)
+```
+#### [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
+```python
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        # the area depends on:
+        # 1. the shorter line
+        # 2. the len between two lines
+        # so we can remove the shorter line after we update the area
+        ans = 0
+        n = len(height)
+        l = 0
+        r = n - 1
+        while l < r:
+            area = (r - l) * min(height[l], height[r])
+            ans = max(ans, area)
+            # remove the shorter line
+            if height[l] <= height[r]:
+                l += 1
+            else:
+                r -= 1
+        return ans
+```
+#### [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)
+[盛最多水的容器 接雨水【基础算法精讲 02】](https://www.bilibili.com/video/BV1Qg411q7ia?spm_id_from=333.788.videopod.sections&vd_source=fb0d94742d314c399a695c3ec1b7dc6b)
+##### Main Idea
+The water trap depends on the smaller height
+##### Dynamic Programing (storing pre and suf maxs)
+Idea:
+The water trap depends on the smaller height,
+we can store two arrays of maxs, pre maxs and suf maxs,
+then calculate each bucket water using pre maxs and suf maxs in the same index,
+the equation is `min(pre max, sul max) - h`
+
+Time: `O(n)`
+Space: `O(n)`
+```python
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        n = len(height)
+        # init pre maxs
+        pre_maxs = [0] * n
+        pre_maxs[0] = height[0]
+        for i in range(1, n):
+            pre_maxs[i] = max(pre_maxs[i - 1], height[i])
+        # init suf maxs
+        suf_maxs = [0] * n
+        suf_maxs[-1] = height[-1]
+        for i in range(n - 2, -1, -1):
+            suf_maxs[i] = max(suf_maxs[i + 1], height[i])
+        # check for ans using pre and suf maxs
+        res = 0
+        for h, pre, sul in zip(height, pre_maxs, suf_maxs):
+            res += min(pre, sul) - h
+        return res
+```
+##### Two pointers
+We have solve it with Dynamic programing by storing pre and suf maxs,
+we can improve the Space to be `O(1)`
+
+Main Idea:
+The water trap depends on the smaller height of the bucket.
+We keep track of pre max and suf max as we move the pointers,
+if pre max smaller than suf max, we update res with `pre max - height[left]`
+else with `suf max - height[right]`
+
+Time:  `O(n)`
+Space: `O(1)`
+```python
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        n = len(height)
+        pre_max = suf_max = left = res = 0
+        right = n - 1
+        while left < right:
+            pre_max = max(pre_max, height[left])
+            suf_max = max(suf_max, height[right])
+            # water trap depends on the smaller edge
+            if pre_max <= suf_max:
+                res += pre_max - height[left]
+                left += 1
+            else:
+                res += suf_max - height[right]
+                right -= 1
+        return res
+```
+
 #### [1099. Two Sum Less Than K](https://leetcode.com/problems/two-sum-less-than-k/)
 I made a mistake on also decreasing r when `sum < k` which is not needed.
 ```python
@@ -501,6 +737,38 @@ class Solution:
                 l += 1
             else:
                 r -= 1
+        return res
+```
+#### [259. 3Sum Smaller](https://leetcode.com/problems/3sum-smaller/)
+I made a mistake on adding which is not needed, because the question is asking for all combination smaller than target
+```python
+if i > 0 and nums[i] == nums[i - 1]:
+    continue
+```
+
+```python
+class Solution:
+    def threeSumSmaller(self, nums: List[int], target: int) -> int:
+        nums.sort()
+        n = len(nums)
+        res = 0
+        for i in range(n - 2):
+            # skip the rest if sum bigger than target
+            if nums[i] + nums[i + 1] + nums[i + 2] > target:
+                break
+            j = i + 1
+            k = n - 1
+            t = target - nums[i]
+            while j < k:
+                s = nums[j] + nums[k]
+                if s < t:
+                    # if nums[j] + nums[k] < t,
+                    # nums[j] + nums[k - 1] < t, nums[j] + nums[k - 2] < t,
+                    # we need to add all these combination to result
+                    res += k - j
+                    j += 1
+                else:
+                    k -= 1
         return res
 ```
 ## NeetCode

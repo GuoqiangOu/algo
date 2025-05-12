@@ -84,3 +84,7 @@ and counts['E'] <= target and counts['R'] <= target:
 A = {'A': 2, 'B': 2, 'C': 2, 'D': 1}
 B = {'A': 3, 'B': 2, 'C': 2}
 # A >= B is False
+
+# to check if a str is palindrome
+# [1616. Split Two Strings to Make Palindrome](https://leetcode.com/problems/split-two-strings-to-make-palindrome/)
+s == s[::-1]

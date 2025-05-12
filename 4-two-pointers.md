@@ -39,10 +39,10 @@ def two_pointers_opposite(arr):
 | 16  | <span style="color: orange;">Medium</span>      | * [611. Valid Triangle Number](https://leetcode.com/problems/valid-triangle-number/)                                                                                                        | <input type="checkbox" checked> |
 | 17  | <span style="color: orange;">Medium</span>1711  | * [923. 3Sum With Multiplicity](https://leetcode.com/problems/3sum-with-multiplicity/)                                                                                                      | <input type="checkbox" checked> |
 | 18  | <span style="color: orange;">Medium</span>      | * [1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers](https://leetcode.com/problems/number-of-ways-where-square-of-number-is-equal-to-product-of-two-numbers/) | <input type="checkbox" checked> |
-| 19  | <span style="color: orange;">Medium</span> 1762 | [948. Bag of Tokens](https://leetcode.com/problems/bag-of-tokens/)                                                                                                                          | <input type="checkbox">         |
+| 19  | <span style="color: orange;">Medium</span> 1762 | [948. Bag of Tokens](https://leetcode.com/problems/bag-of-tokens/)                                                                                                                          | <input type="checkbox" checked> |
 | 20  | <span style="color: orange;">Medium</span>      | * [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)                                                                                                 | <input type="checkbox" checked> |
 | 21  | <span style="color: red;">Hard</span>           | * [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)                                                                                                             | <input type="checkbox" checked> |
-| 22  | <span style="color: orange;">Medium</span> 1868 | [1616. Split Two Strings to Make Palindrome](https://leetcode.com/problems/split-two-strings-to-make-palindrome/)                                                                           | <input type="checkbox">         |
+| 22  | <span style="color: orange;">Medium</span> 1868 | * [1616. Split Two Strings to Make Palindrome](https://leetcode.com/problems/split-two-strings-to-make-palindrome/)                                                                         | <input type="checkbox" checked> |
 | 23  | <span style="color: orange;">Medium</span> 2276 | [1498. Number of Subsequences That Satisfy the Given Sum Condition](https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/)                             | <input type="checkbox">         |
 | 24  | <span style="color: red;">Hard</span> 2457      | [1782. Count Pairs Of Nodes](https://leetcode.com/problems/count-pairs-of-nodes/)                                                                                                           | <input type="checkbox">         |
 | 25  | <span style="color: green;">Easy</span>         | [1099. Two Sum Less Than K](https://leetcode.com/problems/two-sum-less-than-k/)                                                                                                             | <input type="checkbox" checked> |
@@ -628,6 +628,43 @@ class Solution:
         # the total res is count(nums1, nums2) + count(nums2, nums1)
         return count(nums1, nums2) + count(nums2, nums1)
 ```
+#### [948. Bag of Tokens](https://leetcode.com/problems/bag-of-tokens/)
+I made a mistake on using `while left < right`, in this problem, the token on right index is not consumed yet, only the right - 1 is, so we need to include the case that left = right to consume the last token on right index, therefore we need to use `while left <= right`.
+```python
+class Solution:
+    def bagOfTokensScore(self, tokens: List[int], power: int) -> int:
+        # each token we can:
+        # 1. power >= token[i]:
+        #       power -= token[i]
+        #       score += 1
+        # 2. score >= 1:
+        #       power += token[i]
+        #       score -= 1
+        # goal:
+        #   max score
+        # 1. sort the tokens
+        # 2. if power is enough
+        #       face up on left to get score
+        # 3. if power is not enough and score >= 1
+        #       face down on right to get power
+        tokens.sort()
+        n = len(tokens)
+        left = 0
+        right = n - 1
+        score = 0
+        while left <= right:
+            if power >= tokens[left]:
+                power -= tokens[left]
+                score += 1
+                left += 1
+            elif score > 0 and left + 1 < right:
+                score -= 1
+                power += tokens[right]
+                right -= 1
+            else:
+                break
+        return score
+```
 #### [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
 ```python
 class Solution:
@@ -714,6 +751,28 @@ class Solution:
         return res
 ```
 
+#### [1616. Split Two Strings to Make Palindrome](https://leetcode.com/problems/split-two-strings-to-make-palindrome/)
+##### Idea: Greedy + Two Pointers
+1. greedily taking prefix a and suffix b (prefix b and suffix a) until they are not palindrome
+2. check the middle part of a or b is palindrome or not
+
+```python
+class Solution:
+    def checkPalindromeFormation(self, a: str, b: str) -> bool:
+        def check(a: str, b: str) -> bool:
+            n = len(a)
+            left = 0
+            right = n - 1
+            # greedy to check for a(b) prefix and b(a) suffix
+            while left < right and a[left] == b[right]:
+                left += 1
+                right -= 1
+            # check if either of the middle part left is palindrome
+            a_mid = a[left: right + 1]
+            b_mid = b[left: right + 1]
+            return a_mid == a_mid[::-1] or b_mid == b_mid[::-1]
+        return check(a, b) or check(b, a)
+```
 #### [1099. Two Sum Less Than K](https://leetcode.com/problems/two-sum-less-than-k/)
 I made a mistake on also decreasing r when `sum < k` which is not needed.
 ```python
@@ -737,6 +796,77 @@ class Solution:
                 l += 1
             else:
                 r -= 1
+        return res
+```
+
+#### [2422. Merge Operations to Turn Array Into a Palindrome](https://leetcode.com/problems/merge-operations-to-turn-array-into-a-palindrome/)
+```python
+class Solution:
+    def minimumOperations(self, nums: List[int]) -> int:
+        # [4,3,2,1,2,3,1]
+        #    ^     ^
+        # [4,7,9,10,12,15,16]
+  
+        # [16,12,9,7,6,4,1]
+  
+        # [4,3,2,1,2,4]
+
+        # [4,3,2,3,4]
+
+        # main point:
+        # palindrome should have the same sum from
+        # left to right or right to left
+
+        # move the pointer which has less sum until the sum equal to the element
+        # increase the operation counter when moving
+        # if sum is the same, move both the pointers
+
+        n = len(nums)
+        left = 0
+        right = n - 1
+        l_sum = nums[0]
+        r_sum = nums[-1]
+        res = 0
+        while left < right:
+            if l_sum < r_sum:
+                left += 1
+                l_sum += nums[left]
+                res += 1
+            elif l_sum > r_sum:
+                right -= 1
+                r_sum += nums[right]
+                res += 1
+            else:
+                left += 1
+                l_sum += nums[left]
+                right -= 1
+                r_sum += nums[right]
+        return res
+```
+##### Improved version
+```python
+class Solution:
+    def minimumOperations(self, nums: List[int]) -> int:
+        n = len(nums)
+        left = 0
+        right = n - 1
+        res = 0
+        while left < right:
+            if nums[left] < nums[right]:
+                # merge to next left
+                nums[left + 1] += nums[left]
+                left += 1
+                res += 1
+            elif nums[left] > nums[right]:
+                # merge to next right
+                nums[right - 1] += nums[right]
+                right -= 1
+                res += 1
+            else:
+                # skip both
+                left += 1
+                right -= 1
+  
         return res
 ```
 #### [259. 3Sum Smaller](https://leetcode.com/problems/3sum-smaller/)

@@ -46,8 +46,8 @@ def two_pointers_opposite(arr):
 | 23  | <span style="color: orange;">Medium</span> 2276 | [1498. Number of Subsequences That Satisfy the Given Sum Condition](https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/)                             | <input type="checkbox">         |
 | 24  | <span style="color: red;">Hard</span> 2457      | [1782. Count Pairs Of Nodes](https://leetcode.com/problems/count-pairs-of-nodes/)                                                                                                           | <input type="checkbox">         |
 | 25  | <span style="color: green;">Easy</span>         | [1099. Two Sum Less Than K](https://leetcode.com/problems/two-sum-less-than-k/)                                                                                                             | <input type="checkbox" checked> |
-| 26  | <span style="color: orange;">Medium</span>      | [360. Sort Transformed Array](https://leetcode.com/problems/sort-transformed-array/)                                                                                                        | <input type="checkbox">         |
-| 27  | <span style="color: orange;">Medium</span>      | [2422. Merge Operations to Turn Array Into a Palindrome](https://leetcode.com/problems/merge-operations-to-turn-array-into-a-palindrome/)                                                   | <input type="checkbox">         |
+| 26  | <span style="color: orange;">Medium</span>      | * [360. Sort Transformed Array](https://leetcode.com/problems/sort-transformed-array/)                                                                                                      | <input type="checkbox" checked> |
+| 27  | <span style="color: orange;">Medium</span>      | [2422. Merge Operations to Turn Array Into a Palindrome](https://leetcode.com/problems/merge-operations-to-turn-array-into-a-palindrome/)                                                   | <input type="checkbox" checked> |
 | 28  | <span style="color: orange;">Medium</span>      | [259. 3Sum Smaller](https://leetcode.com/problems/3sum-smaller/)                                                                                                                            | <input type="checkbox" checked> |
 #### [344. Reverse String](https://leetcode.com/problems/reverse-string/)
 ```python
@@ -799,6 +799,52 @@ class Solution:
         return res
 ```
 
+#### [360. Sort Transformed Array](https://leetcode.com/problems/sort-transformed-array/)
+![a>0](https://leetcode.com/problems/sort-transformed-array/Figures/360/Slide1.PNG)
+
+![[Pasted image 20250513221218.png]]
+Since the input array is sorted, as above picture, 
+for `a > 0`, we can two pointers to pick the bigger transformed value, the revers is the result
+for `a < 0`, we can two pointers to pick the smaller transformed value
+
+I figured out the `a > 0` part, but didn't try hard to figure out the `a < 0`
+```python
+class Solution:
+    def sortTransformedArray(self, nums: List[int], a: int, b: int, c: int) -> List[int]:
+        def transform(x: int) -> int:
+            return a * x * x + b * x + c
+        n = len(nums)
+        res = []
+        left = 0
+        right = n - 1
+        if a > 0:
+            # When 'upward parabola' or a 'straight line'
+            # we will put the edge element (bigger elements) first.
+            while left <= right:
+                left_val = transform(nums[left])
+                right_val = transform(nums[right])
+                if left_val > right_val:
+                    res.append(left_val)
+                    left += 1
+                else:
+                    res.append(right_val)
+                    right -= 1
+            # Reverse the decreasing 'answer' array.
+            res = res[::-1]
+        else:
+            # When 'downward parabola'
+            # we will put the edge element (smaller elements) first
+            while left <= right:
+                left_val = transform(nums[left])
+                right_val = transform(nums[right])
+                if left_val < right_val:
+                    res.append(left_val)
+                    left += 1
+                else:
+                    res.append(right_val)
+                    right -= 1
+        return res
+```
 #### [2422. Merge Operations to Turn Array Into a Palindrome](https://leetcode.com/problems/merge-operations-to-turn-array-into-a-palindrome/)
 ```python
 class Solution:

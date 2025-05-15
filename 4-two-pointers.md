@@ -43,7 +43,7 @@ def two_pointers_opposite(arr):
 | 20  | <span style="color: orange;">Medium</span>      | * [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)                                                                                                 | <input type="checkbox" checked> |
 | 21  | <span style="color: red;">Hard</span>           | * [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)                                                                                                             | <input type="checkbox" checked> |
 | 22  | <span style="color: orange;">Medium</span> 1868 | * [1616. Split Two Strings to Make Palindrome](https://leetcode.com/problems/split-two-strings-to-make-palindrome/)                                                                         | <input type="checkbox" checked> |
-| 23  | <span style="color: orange;">Medium</span> 2276 | [1498. Number of Subsequences That Satisfy the Given Sum Condition](https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/)                             | <input type="checkbox">         |
+| 23  | <span style="color: orange;">Medium</span> 2276 | * [1498. Number of Subsequences That Satisfy the Given Sum Condition](https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/)                           | <input type="checkbox" checked> |
 | 24  | <span style="color: red;">Hard</span> 2457      | [1782. Count Pairs Of Nodes](https://leetcode.com/problems/count-pairs-of-nodes/)                                                                                                           | <input type="checkbox">         |
 | 25  | <span style="color: green;">Easy</span>         | [1099. Two Sum Less Than K](https://leetcode.com/problems/two-sum-less-than-k/)                                                                                                             | <input type="checkbox" checked> |
 | 26  | <span style="color: orange;">Medium</span>      | * [360. Sort Transformed Array](https://leetcode.com/problems/sort-transformed-array/)                                                                                                      | <input type="checkbox" checked> |
@@ -773,6 +773,95 @@ class Solution:
             return a_mid == a_mid[::-1] or b_mid == b_mid[::-1]
         return check(a, b) or check(b, a)
 ```
+#### [1498. Number of Subsequences That Satisfy the Given Sum Condition](https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/)
+```python
+class Solution:
+    def numSubseq(self, nums: List[int], target: int) -> int:
+	    # after sorted
+
+        # observation 1:
+        # if nums[left] + nums[right] <= target
+        # then
+        # nums[left + 1] + nums[right] <= target
+        # nums[left + 2] + nums[right] <= target
+        # ...
+        # nums[right - 1] + nums[right] <= target
+  
+        # observation 2:
+        # for each element, we can either include or exclude it,
+        # we have 2^n - 1 subset if we include the empty option,
+        # if we fixed to an element nums[left],
+        # we are not counting the empty option [],
+        # so we don't need to -1
+        # we need the result of 2^(right - left)
+        nums.sort()
+        n = len(nums)
+        _mod = 10**9 + 7
+        res = 0
+        left = 0
+        right = n - 1
+        # we need all subset, so we need <= in stead of <
+        while left <= right:
+            _sum = nums[left] + nums[right]
+            if _sum > target:
+                right -= 1
+            else:
+                res += 2 ** (right - left)
+                res %= _mod
+                left += 1
+        return res
+```
+##### using python build in pow(x, y, mod)
+```python
+class Solution:
+    def numSubseq(self, nums: List[int], target: int) -> int:
+        nums.sort()
+        n = len(nums)
+        _mod = 10**9 + 7
+        res = 0
+        left = 0
+        right = n - 1
+        # we need all subset, so we need <= in stead of <
+        while left <= right:
+            _sum = nums[left] + nums[right]
+            if _sum > target:
+                right -= 1
+            else:
+                res += pow(2, right - left, _mod)
+                # ensure no overflow for the sum
+                res %= _mod
+                left += 1
+        return res
+```
+##### Improved version with precompute power values
+```python
+class Solution:
+    def numSubseq(self, nums: List[int], target: int) -> int:
+        nums.sort()
+        n = len(nums)
+        _mod = 10**9 + 7
+        # precompute 2^i % MOD for quick reference
+        power = [1] * n
+        for i in range(1, n):
+            # ensure no overflow for 2^n
+            power[i] = power[i - 1] * 2 % _mod
+  
+        res = 0
+        left = 0
+        right = n - 1
+        # we need all subset, so we need <= in stead of <
+        while left <= right:
+            _sum = nums[left] + nums[right]
+            if _sum > target:
+                right -= 1
+            else:
+                res += power[right - left]
+                # ensure no overflow for the sum
+                res %= _mod
+                left += 1
+        return res
+```
+
 #### [1099. Two Sum Less Than K](https://leetcode.com/problems/two-sum-less-than-k/)
 I made a mistake on also decreasing r when `sum < k` which is not needed.
 ```python

@@ -239,6 +239,8 @@ class Solution:
                 return [left + 1, right + 1]
 ```
 #### [633. Sum of Square Numbers](https://leetcode.com/problems/sum-of-square-numbers/)
+I made a mistake on thinking right is c instead of the square root of c
+`right = isqrt(c)` is the main point of this problem
 ```python
 class Solution:
     def judgeSquareSum(self, c: int) -> bool:

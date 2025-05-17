@@ -176,6 +176,7 @@ class Solution:
         return res
 ```
 #### [658. Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements/)
+I made a mistake on thinking in a way that to add the bigger nums into a res, and take the last k elements, this is not the same as the question is asking, because it could be a case that the closest k are in the middle.
 ```python
 class Solution:
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
@@ -192,7 +193,7 @@ class Solution:
             # from the problem statement we can use:
             # if left_num < right_num or left_num == right_num and arr[left] < arr[right]:
             # which is the same as below
-            if left_num > right_num:
+            if left_num <= right_num:
                 right -= 1
             else:
                 left += 1

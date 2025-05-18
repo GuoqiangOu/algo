@@ -120,7 +120,11 @@ class Solution:
         return right - left + 1
 ```
 #### [2105. Watering Plants II](https://leetcode.com/problems/watering-plants-ii/)
+Mistake 1:
 I made a mistake on updating before refiling and comparing `currA < 0` instead of the plant.
+
+Mistake 2:
+I sorted it somehow which is not needed
 ```python
 class Solution:
     def minimumRefill(self, plants: List[int], capacityA: int, capacityB: int) -> int:
@@ -471,6 +475,9 @@ therefore, we just need to consider the first inequation `a + b > c`,
 and the question now becomes as below:
 
 Find the numbers of triplets where `1 <= a <= b <= c` and `a + b > c`
+
+Key note:
+we need to fix the longest edge which is c, so we can use two pointers in opposite direction. If we fix the shortest one which is a, we need to use two pointers in same direction.
 
 ```python
 class Solution:
@@ -1008,7 +1015,7 @@ class Solution:
         return res
 ```
 #### [259. 3Sum Smaller](https://leetcode.com/problems/3sum-smaller/)
-I made a mistake on adding which is not needed, because the question is asking for all combination smaller than target
+I made a mistake twice! on adding which is not needed, because the question is asking for all combination smaller than target
 ```python
 if i > 0 and nums[i] == nums[i - 1]:
     continue

@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "4-two-pointers.md",
+                "file": "Daily Records.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "4-two-pointers"
+              "title": "Daily Records"
             }
           }
         ],
@@ -185,13 +185,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "4-two-pointers.md",
+                "file": "Daily Records.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 4-two-pointers"
+              "title": "Outline of Daily Records"
             }
           }
         ],
@@ -213,12 +213,12 @@
   },
   "active": "9a4b9a484c0fc79e",
   "lastOpenFiles": [
-    "Daily Records.md",
+    "python-note.md",
     "warmup.md",
+    "4-two-pointers.md",
+    "Daily Records.md",
     "4.1-fast-and-slow-pointers.md",
     "5.2-flexible-sliding-window.md",
-    "python-note.md",
-    "4-two-pointers.md",
     "5.1-fixed-sliding-window.md",
     "6-binary-search.md",
     "1-arrays-and-hashing.md",

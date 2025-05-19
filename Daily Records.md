@@ -10,3 +10,6 @@ Opposite Direction Two Pointers
 6. [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/)
 7. [259. 3Sum Smaller](https://leetcode.com/problems/3sum-smaller/)
 
+2025-05-18:
+Opposite Direction Two Pointers
+1. [948. Bag of Tokens](https://leetcode.com/problems/bag-of-tokens/)

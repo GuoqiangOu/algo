@@ -13,3 +13,19 @@ Opposite Direction Two Pointers
 2025-05-18:
 Opposite Direction Two Pointers
 1. [948. Bag of Tokens](https://leetcode.com/problems/bag-of-tokens/)
+
+2025-05-19:
+Opposite Direction Two Pointers
+1. [1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers](https://leetcode.com/problems/number-of-ways-where-square-of-number-is-equal-to-product-of-two-numbers/)
+	1. we need to count for all combinations (triplets, pairs) for
+		1. square == multiple
+		2. `nums1[i]² == nums2[j] * nums2[k]`
+		3. `nums2[i]² == nums1[j] * nums1[k]`
+	2. on `square == a * b`
+		1. if `a == b` 
+			1. we have n choose 2 combinations to be counted
+				1. `nC2 = n * (n-1)//2`
+		2. if a != b
+			1. count duplicates from left
+			2. count duplicates from right
+			3. multiply counts of duplicates is the combinations we need

@@ -29,3 +29,17 @@ Opposite Direction Two Pointers
 			1. count duplicates from left
 			2. count duplicates from right
 			3. multiply counts of duplicates is the combinations we need
+
+2025-05-20:
+Opposite Direction Two Pointers
+1. [1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers](https://leetcode.com/problems/number-of-ways-where-square-of-number-is-equal-to-product-of-two-numbers/)
+2. [360. Sort Transformed Array](https://leetcode.com/problems/sort-transformed-array/)
+	1. f(x) = ax2 + bx + c
+	2. if a > 0: 
+		1. upward parabola
+		2. larger values are on the ends
+		3. fill res from largest to smallest, then reverse
+	3. if a < :
+		1. downward parabola
+		2. larger values are in the middle
+		3. fill res from smallest to largest (no reverse)

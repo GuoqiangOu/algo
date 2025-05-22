@@ -43,3 +43,11 @@ Opposite Direction Two Pointers
 		1. downward parabola
 		2. larger values are in the middle
 		3. fill res from smallest to largest (no reverse)
+
+2025-05-21:
+Opposite Direction Two Pointers
+1. [1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers](https://leetcode.com/problems/number-of-ways-where-square-of-number-is-equal-to-product-of-two-numbers/)
+2. [360. Sort Transformed Array](https://leetcode.com/problems/sort-transformed-array/)
+3. [2422. Merge Operations to Turn Array Into a Palindrome](https://leetcode.com/problems/merge-operations-to-turn-array-into-a-palindrome/)
+	1. sum will be the same if palindrome
+	2. move the smaller pointer, add the previous num and add count

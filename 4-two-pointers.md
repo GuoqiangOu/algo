@@ -501,6 +501,7 @@ class Solution:
         return ans
 ```
 #### [923. 3Sum With Multiplicity](https://leetcode.com/problems/3sum-with-multiplicity/)
+check with [1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers](https://leetcode.com/problems/number-of-ways-where-square-of-number-is-equal-to-product-of-two-numbers/), very similar problem
 ##### * this problem ask for num of tuples which can have duplicates
 If the result is a count, and duplicates are allowed — think combinatorics.
 need to handle nC2, multiple of duplicates
@@ -553,6 +554,8 @@ class Solution:
 ```
 
 #### [1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers](https://leetcode.com/problems/number-of-ways-where-square-of-number-is-equal-to-product-of-two-numbers/)
+
+check with [923. 3Sum With Multiplicity](https://leetcode.com/problems/3sum-with-multiplicity/), very similar problem
 ##### * this problem ask for num of tuples which can have duplicates
 If the result is a count, and duplicates are allowed — think combinatorics.
 need to handle nC2, multiple of duplicates

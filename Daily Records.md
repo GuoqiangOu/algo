@@ -51,3 +51,12 @@ Opposite Direction Two Pointers
 3. [2422. Merge Operations to Turn Array Into a Palindrome](https://leetcode.com/problems/merge-operations-to-turn-array-into-a-palindrome/)
 	1. sum will be the same if palindrome
 	2. move the smaller pointer, add the previous num and add count
+
+2025-05-22:
+Opposite Direction Two Pointers
+1. [360. Sort Transformed Array](https://leetcode.com/problems/sort-transformed-array/)
+2. [1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers](https://leetcode.com/problems/number-of-ways-where-square-of-number-is-equal-to-product-of-two-numbers/)
+3. [923. 3Sum With Multiplicity](https://leetcode.com/problems/3sum-with-multiplicity/)
+4. [2563. Count the Number of Fair Pairs](https://leetcode.com/problems/count-the-number-of-fair-pairs/)
+	1. when result is with in a range, think of a set - another one
+	2. figure out how to find the res of these two set

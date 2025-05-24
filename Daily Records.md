@@ -60,3 +60,11 @@ Opposite Direction Two Pointers
 4. [2563. Count the Number of Fair Pairs](https://leetcode.com/problems/count-the-number-of-fair-pairs/)
 	1. when result is with in a range, think of a set - another one
 	2. figure out how to find the res of these two set
+
+2025-05-23
+Opposite Direction Two Pointers
+1. [1616. Split Two Strings to Make Palindrome](https://leetcode.com/problems/split-two-strings-to-make-palindrome/)
+	1. from left to right check pre and suf till the diff char
+	2. check `[l : r + 1]` for either a or b is palindrome or not
+	3. check for (a, b) or (b, a)
+

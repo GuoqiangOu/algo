@@ -49,6 +49,10 @@ def two_pointers_opposite(arr):
 | 26  | <span style="color: orange;">Medium</span>      | * [360. Sort Transformed Array](https://leetcode.com/problems/sort-transformed-array/)                                                                                                      | <input type="checkbox" checked> |
 | 27  | <span style="color: orange;">Medium</span>      | [2422. Merge Operations to Turn Array Into a Palindrome](https://leetcode.com/problems/merge-operations-to-turn-array-into-a-palindrome/)                                                   | <input type="checkbox" checked> |
 | 28  | <span style="color: orange;">Medium</span>      | [259. 3Sum Smaller](https://leetcode.com/problems/3sum-smaller/)                                                                                                                            | <input type="checkbox" checked> |
+#### Math related and similar:
+- [1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers](https://leetcode.com/problems/number-of-ways-where-square-of-number-is-equal-to-product-of-two-numbers/)
+- [923. 3Sum With Multiplicity](https://leetcode.com/problems/3sum-with-multiplicity/)
+- [1498. Number of Subsequences That Satisfy the Given Sum Condition](https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/)
 #### [344. Reverse String](https://leetcode.com/problems/reverse-string/)
 ```python
 class Solution:

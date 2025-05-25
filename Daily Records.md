@@ -68,3 +68,15 @@ Opposite Direction Two Pointers
 	2. check `[l : r + 1]` for either a or b is palindrome or not
 	3. check for (a, b) or (b, a)
 
+2025-05-24
+Opposite Direction Two Pointers
+1. [1498. Number of Subsequences That Satisfy the Given Sum Condition](https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/)
+	1. sort
+	2. `while l <= r`
+		1. because subsequence can have only 1 element
+	3. `2^(r-l)`, not `nC2`
+		1. if `nums[l] + nums[r] <= target`, then all sums using elements in `[l, r] <= target`
+		2. nC2 counts all pairs, but question asks to count all subsequences including those has only 1 element
+		3. fixing one element, and choosing the other, we have two options, to add or not to add it, so it's `2^(r-l)`
+2. [1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers](https://leetcode.com/problems/number-of-ways-where-square-of-number-is-equal-to-product-of-two-numbers/)
+3. [923. 3Sum With Multiplicity](https://leetcode.com/problems/3sum-with-multiplicity/)

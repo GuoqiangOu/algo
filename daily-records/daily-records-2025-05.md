@@ -80,3 +80,23 @@ Opposite Direction Two Pointers
 		3. fixing one element, and choosing the other, we have two options, to add or not to add it, so it's `2^(r-l)`
 2. [1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers](https://leetcode.com/problems/number-of-ways-where-square-of-number-is-equal-to-product-of-two-numbers/)
 3. [923. 3Sum With Multiplicity](https://leetcode.com/problems/3sum-with-multiplicity/)
+
+2025-05-25
+Rested
+
+2025-05-26
+Opposite Direction Two Pointers
+1. [923. 3Sum With Multiplicity](https://leetcode.com/problems/3sum-with-multiplicity/)
+	1. `left == right: nC2 = n(n - 1)/2`
+	2. `left != right: left duplicates * right duplicates`
+2. [1577. Number of Ways Where Square of Number Is Equal to Product of Two Numbers](https://leetcode.com/problems/number-of-ways-where-square-of-number-is-equal-to-product-of-two-numbers/)
+	1. sort
+	2. `count(nums1, nums2) + count(nums2, nums1)`
+	3.  `left == right: nC2 = n(n - 1)/2`
+	4. `left != right: left duplicates * right duplicates`
+3. [1498. Number of Subsequences That Satisfy the Given Sum Condition](https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/)
+	1. sort
+	2. `whlie l <= r`
+	3. `left + right <= target`
+		1. to count all **non-empty** combinations, we can either pick or not pick a num
+		2. it is `2^n where n = r - l`

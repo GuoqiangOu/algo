@@ -100,3 +100,32 @@ Opposite Direction Two Pointers
 	3. `left + right <= target`
 		1. to count all **non-empty** combinations, we can either pick or not pick a num
 		2. it is `2^n where n = r - l`
+
+2025-05-27
+Was preparing self introduction for BQ
+
+2025-05-28
+Opposite Direction Two Pointers
+1. [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
+	1. area depends on the smaller height, so `min(l, r) * (r - l)`
+2. [15. 3Sum](https://leetcode.com/problems/3sum/)
+	1. made mistake on using `l = 0` instead of `l = i + 1`
+	2. made mistake on skipping duplicates
+		1. if updated pointers, 
+			1. left need to check `nums[l] == nums[l - 1]`
+			2. right need to check `nums[r] == nums[r + 1]`
+3. [611. Valid Triangle Number](https://leetcode.com/problems/valid-triangle-number/)
+	1. the Triangle Inequality Theorem
+		1. fixing the biggest `c` and `a <= b <= c` with sorted
+		2. `a + c >= a + b > b` -> `a + c > b`
+		3. `b + c >= a + a > a` -> `b + c > b`
+		4. so we just need to check if `a + b > c`
+	2. res to be updated with `r - l` because
+		1. if `nums[l] + nums[r] > nums[i]`
+		2. then `nums[l + 1] + nums[r] > nums[i]` since `nums[l] < nums[l + 1]`
+
+Same Direction Two Pointers
+1. [283. Move Zeroes](https://leetcode.com/problems/move-zeroes/)
+	1. `left point to the 0`
+	2. `right point to the next value`
+	3. if right is non 0, we swap left with right

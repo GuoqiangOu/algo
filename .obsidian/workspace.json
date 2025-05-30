@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "daily-records/daily-records-2025-05.md",
+                "file": "Algos.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "daily-records-2025-05"
+              "title": "Algos"
             }
           }
         ],
@@ -185,13 +185,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "daily-records/daily-records-2025-05.md",
+                "file": "Algos.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of daily-records-2025-05"
+              "title": "Outline of Algos"
             }
           }
         ],
@@ -213,13 +213,13 @@
   },
   "active": "9a4b9a484c0fc79e",
   "lastOpenFiles": [
+    "daily-records/daily-records-2025-05.md",
     "4-two-pointers.md",
     "5.1-fixed-sliding-window.md",
     "6-binary-search.md",
     "8-tree.md",
     "warmup.md",
     "python-note.md",
-    "daily-records/daily-records-2025-05.md",
     "daily-records",
     "filter.md",
     "README.md",

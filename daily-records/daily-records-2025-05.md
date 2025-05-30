@@ -129,3 +129,25 @@ Same Direction Two Pointers
 	1. `left point to the 0`
 	2. `right point to the next value`
 	3. if right is non 0, we swap left with right
+
+
+2025-05-29
+Two Pointers
+1. [75. Sort Colors](https://leetcode.com/problems/sort-colors/)
+	1. `i` to go through each num
+	2. `l and r` keep track of 0s and 2s
+	3. 0: swap with left, update left and `i`
+	4. 1: no swap, update `i`
+	5. 2: swap with right, update right, do not update `i`
+	6. made a mistake on updating `i` for all cases
+2. [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)
+	1. create `pre_max` and `suf_max` arrays
+	2. loop through heights to calculate and add up to res
+		1. `volume = min(pre_max, suf_max) - current height`
+	3. improvement to `O(1)` space:
+		1. we store the `pre_max` and `suf_max` as variables instead of arrays
+		2. two pointers 
+			1. to update `pre` and `suf_max`
+			2. move and update base on the smaller pointer
+			3. calculate and update the volume with the smaller height
+3. 

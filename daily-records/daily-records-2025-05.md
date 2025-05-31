@@ -150,4 +150,23 @@ Two Pointers
 			1. to update `pre` and `suf_max`
 			2. move and update base on the smaller pointer
 			3. calculate and update the volume with the smaller height
-3. 
+
+2025-05-30
+Sliding Window
+1. [3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+	1. need to check duplicates -> hashmap or set
+	2. longest substring, unknown len -> flexible sliding window
+	3. into window
+	4. while invalid
+		1. out of window
+	5. update res
+2. [424. Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/)
+	1. looks like flexible sliding window but not sure
+	2. need to check duplicates for frequency -> counter/hashmap
+	3. valid: `r - l + 1 - most appear char num <= k`
+	4. invalid: `r - l + 1 - most appear char num > k`
+	5. into window: add count and update max frequency
+	6. if invalid: out of window
+	7. update res
+
+sad, I almost forgot about how to solve sliding window problem ...

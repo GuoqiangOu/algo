@@ -170,3 +170,38 @@ Sliding Window
 	7. update res
 
 sad, I almost forgot about how to solve sliding window problem ...
+
+2025-05-31
+Sliding Window
+1. [Maximum Sum of Subarrays of Size K](https://www.hellointerview.com/learn/code/sliding-window/maximum-sum-of-subarrays-of-size-k)
+2. [2461. Maximum Sum of Distinct Subarrays With Length K](https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/)
+	1. my approch
+		1. into window
+		2. shrink window while has duplicate and len > k
+		3. update res
+	2. 灵神
+		1. into window
+		2. extend to window size
+		3. check hashmap  len == k to update res
+		4. out of window
+3. [1423. Maximum Points You Can Obtain from Cards](https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/)
+	1. first k
+	2. last k
+	3. first + last = k
+	4. loop to get score at start
+	5. `while i > 0:`
+		1. start out
+		2. tail in
+		3. update res
+4. [1456. Maximum Number of Vowels in a Substring of Given Length](https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/)
+	1. into window if right is vowels
+	2. extend to k size
+	3. update res
+	4. out of window if left is vowels
+5. [643. Maximum Average Subarray I](https://leetcode.com/problems/maximum-average-subarray-i/)
+	1. res = -inf
+	2. right into window to add sum
+	3. extend to k size
+	4. update res with max avg
+	5. left out of window to reduce sum
+6. 

@@ -1,12 +1,30 @@
 # Binary Search
 
-# [二分查找为什么总是写错？](https://www.bilibili.com/video/BV1d54y1q7k7/?spm_id_from=333.337.search-card.all.click&vd_source=fb0d94742d314c399a695c3ec1b7dc6b)
-## Steps
+[二分查找为什么总是写错？](https://www.bilibili.com/video/BV1d54y1q7k7/?spm_id_from=333.337.search-card.all.click&vd_source=fb0d94742d314c399a695c3ec1b7dc6b)
+[二分查找 红蓝染色法【基础算法精讲 04】](https://www.bilibili.com/video/BV1AP41137w7?vd_source=fb0d94742d314c399a695c3ec1b7dc6b&spm_id_from=333.788.videopod.sections)
+
+# Steps
 1. define the condition()
 2. define what to return, l or r
 3. use the template
 4. any other thing to be handled
+
+[34. Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
+For integers, conditions are transferable:
+1. `>= 8`
+2. `> 8` 
+	1. equals `(>= 8 + 1) -> (>= 9)`
+	2. `binary_search(>= 9)`
+3. `< 8` 
+	1. equals `(>= 8) - 1`
+	2. which is the number on the LEFT of `binary_search(>= 8)`
+4. `<= 8` 
+	1. equals `(> 8) - 1` 
+	2. equals `(>= 8 + 1) - 1` by #2
+	3. equals `(>= 9) - 1`
+	4. which is the number on the LEFT of `binary_search(>=9)`
 # Template 0
+左开右开区间
 ```python
 def binary_search(arr: List[int], target: int) -> int:
     l, r = -1, len(arr)
@@ -38,6 +56,7 @@ def binary_search(arr: List[int], target: int) -> int:
     #    return l
 ```
 # Template 1
+左闭右闭区间
 ```python
 def binary_search(arr: List[int], target: int) -> int:
     l, r = 0, len(arr) - 1

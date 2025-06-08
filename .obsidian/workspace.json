@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "0e0767282d7c25f4",
+        "id": "602db82607237427",
         "type": "tabs",
         "children": [
           {
-            "id": "9a4b9a484c0fc79e",
+            "id": "8b639eb1032dd42a",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -168,32 +168,35 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9a4b9a484c0fc79e",
+  "active": "8b639eb1032dd42a",
   "lastOpenFiles": [
-    "daily-records/daily-records-2025-05.md",
-    "daily-records/2025-06.md",
-    "5.1-fixed-sliding-window.md",
-    "5.2-flexible-sliding-window.md",
     "1-arrays-and-hashing.md",
+    "daily-records/daily-records-2025-05.md",
+    "8-tree.md",
+    "7-linked-list.md",
+    "6-binary-search.md",
+    "5.2-flexible-sliding-window.md",
+    "5.1-fixed-sliding-window.md",
+    "4-two-pointers.md",
+    "4.1-fast-and-slow-pointers.md",
+    "daily-records/2025-06.md",
+    "Algos.md",
+    "filter.md",
+    "2025-06-07.md",
+    "Pasted image 20250502224642.png",
+    "Untitled.canvas",
+    "Untitled 2.canvas",
+    "Untitled 1.canvas",
     "python-note.md",
     "3-stack.md",
     "README.md",
-    "4-two-pointers.md",
-    "4.1-fast-and-slow-pointers.md",
-    "6-binary-search.md",
-    "7-linked-list.md",
-    "8-tree.md",
-    "Algos.md",
-    "filter.md",
     "warmup.md",
     "Pasted image 20250513221218.png",
     "Pasted image 20250513221154.png",
-    "Pasted image 20250502224642.png",
     "daily-records",
     "companies/StackAdapt.md",
     "companies",
     "Python Notes.md",
-    "().md",
-    "Untitled.canvas"
+    "().md"
   ]
 }

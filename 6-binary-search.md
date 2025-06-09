@@ -10,18 +10,18 @@
 4. any other thing to be handled
 
 [34. Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
-For integers, conditions are transferable:
+For integers, lower bound conditions are transferable:
 1. `>= 8`
 2. `> 8` 
 	1. equals `(>= 8 + 1) -> (>= 9)`
 	2. `binary_search(>= 9)`
 3. `< 8` 
-	1. equals `(>= 8) - 1`
+	1. equals `idx of (>= 8) - 1`
 	2. which is the number on the LEFT of `binary_search(>= 8)`
 4. `<= 8` 
 	1. equals `(> 8) - 1` 
-	2. equals `(>= 8 + 1) - 1` by #2
-	3. equals `(>= 9) - 1`
+	2. equals `idx of (>= 8 + 1) - 1` by #2
+	3. equals `idx of (>= 9) - 1`
 	4. which is the number on the LEFT of `binary_search(>=9)`
 # Template 0
 左开右开区间
@@ -305,3 +305,4 @@ class Solution:
             return l - 1 if l - 1 >= 0 and nums[l - 1] == target else - 1
 
         return [findLowerBound(nums, target), findUpperBound(nums, target)]
+

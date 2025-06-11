@@ -88,3 +88,13 @@ B = {'A': 3, 'B': 2, 'C': 2}
 # to check if a str is palindrome
 # [1616. Split Two Strings to Make Palindrome](https://leetcode.com/problems/split-two-strings-to-make-palindrome/)
 s == s[::-1]
+
+# to find lower bound, the idx of 1st num >= target
+# [2563. Count the Number of Fair Pairs](https://leetcode.com/problems/count-the-number-of-fair-pairs/)
+bisect_left(arr, target, startIdx, endEdx)
+
+# to find upper bound, the idx of 1st num > target
+# [2563. Count the Number of Fair Pairs](https://leetcode.com/problems/count-the-number-of-fair-pairs/)
+bisect_right(arr, target, startIdx, endEdx)
+
+
